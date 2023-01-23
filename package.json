@@ -1,0 +1,23 @@
+{
+  "name": "mailsender",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "nodemailer": "^6.9.0",
+    "nodemon": "^2.0.20",
+    "url": "^0.11.0",
+    "uuid": "^9.0.0"
+  }
+}
