@@ -57,11 +57,4 @@ class UsersClass {
     }
 }
 
-const userTemplate = {
-    email: "mymail@gmail.com",
-    name: "sidney",
-    id: "slkdfjsdklfjsdklfjsdkflsdjfkl101",
-    password: "ioujdfh@gisduhjkfgsiduy$$fghsdfshbdfjsdfgujsd^hfbsdfjghsd%*fjhsdfgvjh^sgdfv"
-}
-
 module.exports = new UsersClass;

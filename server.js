@@ -13,7 +13,7 @@ app.use("/website", express.static("website"))
 app.set("view engine", "ejs")
 
 app.get("/", (req, res) => {
-    res.render(websiteUrl + "/dashboard/index.ejs", { data: "ella" })
+    res.render(websiteUrl + "/dashboard/index.ejs", { data: "ella", classes: ["3AC frans", "3AC duits", "geile klas"] })
 })
 
 app.get("/login", (req, res) => {
@@ -61,7 +61,11 @@ app.post("/signup", (req, res) => {
         id: "idddd",
         password: bcrypt.hashSync(req.body.password, 10),
         verified: false,
-        tokens: []
+        tokens: [],
+        data: {
+            sets: [],
+            classes: []
+        }
     })
     let token = users.addTokenToUser({ email: req.body.email })
     res.cookie("loginInfo", JSON.stringify({ email: req.body.email, token: token }))
@@ -71,6 +75,10 @@ app.post("/signup", (req, res) => {
 app.get("/verify", (req, res) => {
     users.verifyUser({ email: decodeURIComponent(req.query.email), code: decodeURIComponent(req.query.code) });
     res.sendFile(websiteUrl + "/close/index.html")
+})
+
+app.get("/sets/new", (req, res) => {
+    res.sendFile(websiteUrl + "/sets/new/index.html")
 })
 
 /*users.newUser({
