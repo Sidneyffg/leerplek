@@ -17,9 +17,6 @@
         <a href="/sets" class="nav-item nav-text">
             <h3>Your Sets</h3>
         </a>
-        <a href="/" class="nav-item nav-text">
-            <h3>Classes</h3>
-        </a>
         <div class="nav-separator"></div>
         <div class="nav-item nav-create">
             <p>Create</p>
@@ -27,28 +24,43 @@
         </div>
         <img class="nav-item " src="/images/account.svg" alt="">
     </nav>
+    <div class="classes-section">
+        <h2>Classes</h2>
+        <a href="/classes"></a>
+        <div class="class-container">
+            <h3>Frans 3ad</h3>
+
+        </div>
+    </div>
 </body>
 <style>
     * {
         font-family: "roboto";
     }
 
-    body,
-    html {
+    html,body {
         background-color: rgb(27, 27, 34);
         margin: 0;
         padding: 0;
         color: white;
+        height: 100%;
+    }
+
+    body {
+        display: grid;
+        grid-template-areas:
+        "nav nav"
+        "main classes";
+        grid-template-columns: 1fr 300px;
+        grid-template-rows: 50px 1fr;
     }
 
     nav {
+        grid-area: nav;
         background-color: rgb(73, 73, 73);
-        width: 100%;
-        height: 50px;
         display: flex;
         padding: 7px 15px;
         box-sizing: border-box;
-
     }
 
     .nav-item {
@@ -89,6 +101,25 @@
     .nav-create>p {
         margin: 0;
         font-size: 1.3rem;
+    }
+
+    .classes-section {
+        grid-area: classes;
+        background-color: rgb(37, 37, 46);
+        border-left: 1px solid rgb(68, 68, 79);
+        padding: 10px;
+        color: rgb(164, 164, 164);
+    }
+
+    .class-container {
+        border: 1px rgb(68, 68, 79) dashed;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .class-container>h3 {
+        margin: 0;
+        border-bottom: 1px rgb(68, 68, 79) dashed;
     }
 </style>
 
