@@ -3,6 +3,7 @@ const cookie = require("cookie-parser")
 const app = express();
 const bcrypt = require("bcrypt")
 const users = require("./serverFiles/users/users.js")
+const sets = require("./serverFiles/sets/sets.js")
 let websiteUrl = __dirname + "/website"
 
 app.use("/images", express.static("images"))
@@ -58,7 +59,6 @@ app.post("/signup", (req, res) => {
     users.newUser({
         name: req.body.name,
         email: req.body.email.toLocaleLowerCase(),
-        id: "idddd",
         password: bcrypt.hashSync(req.body.password, 10),
         verified: false,
         tokens: [],
@@ -81,14 +81,19 @@ app.get("/sets/new", (req, res) => {
     res.sendFile(websiteUrl + "/sets/new/index.html")
 })
 
-/*users.newUser({
-    name: "sidney oostveen",
-    email: "sidney.oostveen@gmail.com",
-    id: "deBeste",
-    password: "veryGoedPassword",
-    verified: false,
-    tokens: []
-})*/
+app.post("/sets/new", (req,res) => {
+
+})
+
+/*console.log(sets.addSet({
+    name: "very goed set",
+    description: "yas",
+    words: [],
+    translations: [],
+    creationDate: Date.now(),
+    creatorId: users.getUser({email: "sidney.oostveen@gmail.com"}).id
+}))*/
+
 
 app.listen(3000, () => {
     console.log("Server running:)")

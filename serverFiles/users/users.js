@@ -24,6 +24,7 @@ class UsersClass {
         if (this.getUser(userData)) return false;
         let code = uuid.v1();
         userData.verificationCode = code;
+        userData.id = uuid.v4();
         this.users.push(userData);
         mailer.sendMail(0, "", { code: code, email: userData.email })
         this.saveUsers();
