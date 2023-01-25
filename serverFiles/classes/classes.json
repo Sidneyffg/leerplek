@@ -1,0 +1,16 @@
+[
+  {
+    "name": "new class",
+    "language": "french",
+    "memebers": [
+      {
+        "name": "Sidney Oostveen",
+        "id": "a34356ff-e427-44ec-8201-68dd1e8f4b5a",
+        "role": "teacher"
+      }
+    ],
+    "creationDate": 1674664572365,
+    "homework": [],
+    "id": "610ad7d0-9cce-11ed-b87e-717d898fe09f"
+  }
+]

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New set</title>
+    <title>New class</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
@@ -31,17 +31,6 @@
         </div>
         <img class="nav-item " src="/images/account.svg" alt="">
     </nav>
-    <div class="set-information">
-        <label for="set-name">Name: </label>
-        <input type="text" id="set-name" class="set-name">
-        <label for="set-description">Description:</label>
-        <input type="text" id="set-description" class="set-description">
-        <label for="set-language">Language:</label>
-        <select id="set-language">
-            <option>French</option>
-            <option>Duits</option>
-        </select>
-    </div>
 </body>
 <style>
     * {
@@ -135,38 +124,6 @@
 
     .nav-create:hover .create-dropdown {
         display: block;
-    }
-
-    .set-information {
-        width: calc(100% - 400px);
-        margin-inline: 200px;
-        margin-top: 50px;
-        box-sizing: border-box;
-        display: grid;
-        grid-template-areas:
-            "name name"
-            "description settings";
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 30px 100px;
-        gap: 10px;
-    }
-
-    .set-information input {
-        background-color: rgb(45, 45, 53);
-        border: none;
-        border-radius: 5px;
-        outline: none;
-        color: white;
-        box-sizing: border-box;
-        padding: 5px 15px;
-    }
-
-    .set-name {
-        grid-area: name;
-    }
-
-    .set-description {
-        grid-area: description;
     }
 </style>
 </body>

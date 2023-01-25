@@ -4,6 +4,7 @@ const app = express();
 const bcrypt = require("bcrypt")
 const users = require("./serverFiles/users/users.js")
 const sets = require("./serverFiles/sets/sets.js")
+const classes = require("./serverFiles/classes/classes.js")
 let websiteUrl = __dirname + "/website"
 
 app.use("/images", express.static("images"))
@@ -13,7 +14,7 @@ app.use(cookie())
 app.use("/website", express.static("website"))
 app.set("view engine", "ejs")
 
-app.get("/", (req, res) => {
+app.get("/dashboard", (req, res) => {
     res.render(websiteUrl + "/dashboard/index.ejs", { data: "ella", classes: ["3AC frans", "3AC duits", "geile klas"] })
 })
 
@@ -35,8 +36,13 @@ app.post("/login", (req, res) => {
     res.cookie("loginInfo", JSON.stringify({
         email: email,
         token: users.addTokenToUser({ email: email })
-    }));
-    res.redirect("/")
+    }), {
+        maxAge: 2678400000,//1 month
+        httpOnly: true,
+        sameSite: "lax",
+        secure: false
+    });
+    res.redirect("/dashboard")
 })
 
 app.get("/signup", (req, res) => {
@@ -69,7 +75,7 @@ app.post("/signup", (req, res) => {
     })
     let token = users.addTokenToUser({ email: req.body.email })
     res.cookie("loginInfo", JSON.stringify({ email: req.body.email, token: token }))
-    res.redirect("/")
+    res.redirect("/dashboard")
 })
 
 app.get("/verify", (req, res) => {
@@ -81,8 +87,24 @@ app.get("/sets/new", (req, res) => {
     res.sendFile(websiteUrl + "/sets/new/index.html")
 })
 
-app.post("/sets/new", (req,res) => {
+app.get("/classes/new", (req, res) => {
+    res.sendFile(websiteUrl + "/classes/new/index.html")
+})
 
+app.post("/classes/new", (req, res) => {
+    let loginInfo = JSON.parse(req.cookies.loginInfo)
+    if (users.checkToken(loginInfo.token, { email: loginInfo.email })) {
+        res.redirect("/dashboard")
+        return
+    }
+    if (req.body.className == "" || req.body.language == "") {
+        res.redirect("/dashboard")
+        return
+    }
+    const user = users.getUser({ email: loginInfo.email })
+    const classId = classes.newClass(req.body, user)
+    user.data.classes.push(classId)
+    res.redirect("/classes/" + classId)
 })
 
 /*console.log(sets.addSet({

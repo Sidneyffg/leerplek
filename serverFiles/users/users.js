@@ -14,6 +14,7 @@ class UsersClass {
     getUser(userData) {
         if (userData.hasOwnProperty("email")) return this.users.find(e => e.email == userData.email) ?? null
         if (userData.hasOwnProperty("id")) return this.users.find(e => e.id == userData.id) ?? null
+        if (userData.hasOwnProperty("token")) return this.users.find(e => e.tokens.includes(userData.token)) ?? null
     }
 
     /**
@@ -47,6 +48,12 @@ class UsersClass {
         user.tokens.push(token)
         this.saveUsers();
         return token;
+    }
+
+    checkToken(token, userData) {
+        let user = this.getUser(userData);
+        if (!user || !user.tokens.includes(token)) return false;
+        return true
     }
 
     saveUsers() {

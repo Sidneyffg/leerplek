@@ -2,14 +2,18 @@
   {
     "name": "Sidney Oostveen",
     "email": "sidney.oostveen@gmail.com",
-    "password": "$2b$10$9bmVm48uamz99BB6MMdoru9wDDYdpROwv3uh9WbzeIK8H36N.5QEK",
+    "password": "$2b$10$pu.ulgxpyeNN0HMHoGtxmOLNgnMz.mA2imsm5f.3kpOgyjuXQr2zG",
     "verified": false,
-    "tokens": [],
+    "tokens": [
+      "fb3b1100-9cd6-11ed-9628-7fe904b03861",
+      "52fea5d0-9cd9-11ed-a087-611fdea22da0",
+      "933454b0-9cd9-11ed-9dce-b3882f2315c0"
+    ],
     "data": {
       "sets": [],
       "classes": []
     },
-    "verificationCode": "90daa0c0-9c2a-11ed-aef3-2990dd5b7ce0",
-    "id": "b0ff789b-990f-41ff-8ce0-bd9d5debdd17"
+    "verificationCode": "61099f50-9cce-11ed-b87e-717d898fe09f",
+    "id": "a34356ff-e427-44ec-8201-68dd1e8f4b5a"
   }
 ]
