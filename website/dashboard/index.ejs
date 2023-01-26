@@ -26,7 +26,8 @@
             <img src="/images/add.svg" alt="">
             <div class="create-dropdown">
                 <a href="/sets/new" class="create-dropdown-elem">Set</a>
-                <a href="/classes/new" class="create-dropdown-elem">Class</a>
+                <div href="/classes/new" class="create-dropdown-elem"
+                    onclick="document.getElementById('background-darkener').style.display='inherit'">Class</div>
             </div>
         </div>
         <img class="nav-item " src="/images/account.svg" alt="">
@@ -76,8 +77,95 @@
             </div>
         </a>
     </div>
+    <div class="background-darkener" id="background-darkener" style="display: none;">
+        <div class="class-create-section">
+            <div class="class-create-top">
+                <h1>Create a new class</h1>
+                <img src="/images/close.svg" alt="close"
+                    onclick="document.getElementById('background-darkener').style.display='none'">
+            </div>
+            <label for="class-name">Class name:</label>
+            <input type="text" id="class-name">
+            <div class="class-language-container">
+                <label for="class-language">Language:</label>
+                <select id="class-language">
+                    <option>French</option>
+                    <option>German</option>
+                    <option>English</option>
+                    <option>Spanish</option>
+                    <option>Chinese</option>
+                    <option>Other</option>
+                    <option>Non specific</option>
+                </select>
+            </div>
+        </div>
+    </div>
 </body>
 <style>
+    .background-darkener {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .25);
+    }
+
+    .class-create-section {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+        height: 450px;
+        color: white;
+        background-color: rgb(73, 73, 73);
+        box-sizing: border-box;
+        padding: 25px;
+        border-radius: 5px;
+    }
+
+    .class-create-top {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .class-create-top>h1 {
+        margin: 0;
+    }
+
+    .class-create-top>img {
+        height: 30px;
+        margin-left: auto;
+        cursor: pointer;
+    }
+
+    #class-name {
+        width: 100%;
+        box-sizing: border-box;
+        height: 30px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(27, 27, 34);
+        color: white;
+        padding: 5px 10px;
+    }
+
+    .class-language-container {
+        width: min-content;
+        margin-top: 20px;
+    }
+
+    #class-language {
+        width: 150px;
+        background-color: rgb(46, 124, 212);
+        height: 25px;
+        border: none;
+        outline: none;
+    }
+
     * {
         font-family: "roboto";
     }
@@ -163,7 +251,7 @@
         display: none;
     }
 
-    .create-dropdown>a {
+    .create-dropdown-elem {
         display: block;
         width: 100%;
         margin-right: auto;
@@ -171,7 +259,7 @@
         box-sizing: border-box;
     }
 
-    .create-dropdown>a:hover {
+    .create-dropdown-elem:hover {
         background-color: rgb(45, 45, 53);
     }
 
