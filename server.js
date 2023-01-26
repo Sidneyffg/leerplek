@@ -87,17 +87,30 @@ app.get("/sets/new", (req, res) => {
     res.sendFile(websiteUrl + "/sets/new/index.html")
 })
 
-app.get("/classes/new", (req, res) => {
-    res.sendFile(websiteUrl + "/classes/new/index.html")
+app.get("/classes/*", (req, res) => {
+    let classId = req.url.split("/")[2];
+    let selectedClass = classes.getClass(classId)
+    if (!selectedClass) {
+        res.redirect("/dashboard")
+        return
+    }
+    let loginInfo = JSON.parse(req.cookies.loginInfo)
+    if (!users.checkToken(loginInfo.token, { email: loginInfo.email })) {
+        res.redirect("/dashboard")
+        return
+    }
+    let user = users.getUser({email: loginInfo.email})
+    console.log(selectedClass)
+    res.render(websiteUrl + "/classes/class.ejs", { classInfo: selectedClass,userData: user, languages: classes.languages, roles: classes.roles })
 })
 
 app.post("/classes/new", (req, res) => {
     let loginInfo = JSON.parse(req.cookies.loginInfo)
-    if (users.checkToken(loginInfo.token, { email: loginInfo.email })) {
+    if (!users.checkToken(loginInfo.token, { email: loginInfo.email })) {
         res.redirect("/dashboard")
         return
     }
-    if (req.body.className == "" || req.body.language == "") {
+    if (req.body.name == "" || req.body.language == "") {
         res.redirect("/dashboard")
         return
     }

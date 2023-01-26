@@ -1,16 +1,31 @@
 [
   {
-    "name": "new class",
-    "language": "french",
-    "memebers": [
+    "name": "klas 3ad",
+    "language": "0",
+    "members": [
       {
         "name": "Sidney Oostveen",
         "id": "a34356ff-e427-44ec-8201-68dd1e8f4b5a",
-        "role": "teacher"
+        "role": 2
+      },
+      {
+        "name": "Robin de miniscule Vos",
+        "id": "niet waardevol genoeg voor een id",
+        "role": 2
+      },
+      {
+        "name": "Robin de grote Vos",
+        "id": "wel waardevol genoeg voor een id",
+        "role": 1
+      },
+      {
+        "name": "User 3",
+        "id": "wel waardevol genoeg voor een id",
+        "role": 0
       }
     ],
-    "creationDate": 1674664572365,
-    "homework": [],
-    "id": "610ad7d0-9cce-11ed-b87e-717d898fe09f"
+    "creationDate": 1674740886516,
+    "id": "0fd22b40-9d80-11ed-9dcb-7f04a35906c9",
+    "homework": []
   }
 ]
