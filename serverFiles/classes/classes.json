@@ -5,8 +5,8 @@
     "members": [
       {
         "name": "Sidney Oostveen",
-        "id": "a34356ff-e427-44ec-8201-68dd1e8f4b5a",
-        "role": 2
+        "id": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "role": 1
       },
       {
         "name": "Robin de miniscule Vos",
@@ -21,6 +21,11 @@
       {
         "name": "User 3",
         "id": "wel waardevol genoeg voor een id",
+        "role": 0
+      },
+      {
+        "name": "Ramon van koeien",
+        "id": "jskldjf",
         "role": 0
       }
     ],
