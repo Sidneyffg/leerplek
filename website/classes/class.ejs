@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Class</title>
+    <link rel="stylesheet" href="/static/class.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
 </head>
 
@@ -68,14 +69,19 @@
 
         </div>
         <div class="section">
-            <div class="overview-section-top-container">
-                <div class="overview-section-top">
-                    <h3>Homework</h3>
-                    <% if(classInfo.members.find(e=> e.id == userData.id).role>0) { %>
-                    <img src="/images/add.svg" alt="add">
-                    <%}%>
+            <div class="overview-updates">
+                <div class="updates-section-top-container">
+                    <div class="updates-section-top">
+                        <h3>Homework</h3>
+                        <% if(classInfo.members.find(e=> e.id == userData.id).role>0) { %>
+                            <img src="/images/add.svg" alt="add">
+                            <%}%>
+                    </div>
+                    <div class="updates-line"></div>
                 </div>
-                <div class="overview-line"></div>
+                <div class="update-container">
+
+                </div>
             </div>
         </div>
         <div class="section">
@@ -102,9 +108,9 @@
                             </label>
                             <input hidden type="checkbox" class="edit-member-checkbox" id="edit-member-checkbox<%=i%>">
                             <div class="edit-member-section">
-                                <% if(classInfo.members.find(e=> e.id == userData.id).role>0&&classInfo.members.find(e=>
-                                    e.id == userData.id).role >=
-                                    classInfo.members[i].role&&userData.id!=classInfo.members[i].id) {%>
+                                <% if(classInfo.members.find(e=> e.id ==
+                                    userData.id).role>0&&classInfo.members.find(e=>e.id == userData.id).role
+                                    >=classInfo.members[i].role&&userData.id!=classInfo.members[i].id) {%>
                                     <p>Remove</p>
                                     <%}%>
                                         <a href="/profile/<%=classInfo.members[i].id%>">Profile</a>
@@ -157,325 +163,25 @@
             </div>
         </div>
     </div>
+    <div class="homework-section">
+        <h2 style="margin-bottom: 0;">Homework</h2>
+        <a href="./<%=classInfo.id%>/homework" class="homework-item">
+            <div class="homework-item-left">
+                <h4 class="homework-title">H3 paragraaf A</h4>
+                <div class="homework-data-section" style="margin-left: auto;">
+                    <p>5d&nbsp;</p>
+                    <img src="/images/clock.svg" onerror="this.style.display='none'" style="margin-top: -1px;">
+                    <p>&nbsp;-&nbsp;</p>
+                    <p>32w&nbsp;</p>
+                    <img src="/images/checklist.svg" onerror="this.style.display = 'none'">
+                </div>
+            </div>
+            <img src="/images/more.svg" alt="more" class="homework-item-right">
+        </a>
+    </div>
 </body>
 <style>
-    .overview-section-top-container {
-        width: 100%;
-        box-sizing: border-box;
-    }
 
-    .overview-section-top {
-        display: flex;
-        width: 100%;
-    }
-
-    .overview-section-top>* {
-        margin: 0;
-    }
-
-    .overview-section-top>img {
-        margin-left: auto;
-        height: 30px;
-    }
-
-    .overview-line {
-        width: 100%;
-        box-sizing: border-box;
-        border-bottom: dashed 2px;
-    }
-
-    .settings-container {
-        display: grid;
-        grid-template-areas: "left right";
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-    }
-
-    .left-side {
-        grid-area: left;
-    }
-
-    .right-side {
-        grid-area: right;
-    }
-
-    .radio-container {
-        width: min-content;
-    }
-
-    .input-container {
-        display: inline-block;
-        margin: 0;
-        position: relative;
-        padding-left: 35px;
-        margin-bottom: 12px;
-        cursor: pointer;
-        font-size: 22px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    /* Hide the browser's default radio button */
-    .input-container input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-    }
-
-    /* Create a custom radio button */
-    .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 25px;
-        width: 25px;
-        background-color: #eee;
-        border-radius: 50%;
-    }
-
-    /* On mouse-over, add a grey background color */
-    .input-container:hover input~.checkmark {
-        background-color: #ccc;
-    }
-
-    /* When the radio button is checked, add a blue background */
-    .input-container input:checked~.checkmark {
-        background-color: #2196F3;
-    }
-
-    /* Create the indicator (the dot/circle - hidden when not checked) */
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
-
-    /* Show the indicator (dot/circle) when checked */
-    .input-container input:checked~.checkmark:after {
-        display: block;
-    }
-
-    /* Style the indicator (dot/circle) */
-    .input-container .checkmark:after {
-        top: 9px;
-        left: 9px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: white;
-    }
-
-    .settings-class-name {
-        box-sizing: border-box;
-        width: 100%;
-        height: 30px;
-        outline: none;
-    }
-
-    .settings-class-language-container {
-        width: min-content;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .settings-class-language {
-        width: 150px;
-        background-color: rgb(46, 124, 212);
-        height: 25px;
-        border: none;
-        outline: none;
-    }
-
-    .settings-save-button {
-        float: right;
-        width: 100px;
-        height: 30px;
-    }
-
-    .main {
-        grid-area: main;
-    }
-
-    .class-name {
-        margin: 20px 0 0 30px;
-    }
-
-    .class-name>* {
-        margin: 0;
-    }
-
-    .section {
-        width: 100%;
-        margin: 0;
-        padding: 30px;
-        box-sizing: border-box;
-    }
-
-    .members-list {
-        padding: 0;
-    }
-
-    .member {
-        display: grid;
-        grid-template-columns: 50px 1fr 1fr 40px;
-        gap: 20px;
-        background-color: rgb(62, 62, 78);
-        padding: 5px 0 5px 10px;
-        box-sizing: border-box;
-        height: 50px;
-        border-radius: 3px;
-        margin-bottom: 10px;
-    }
-
-    .member img {
-        height: 40px;
-    }
-
-    .member>p {
-        margin: 10px 0;
-    }
-
-    .edit-member {
-        position: relative;
-    }
-
-    .edit-member img {
-        cursor: pointer;
-    }
-
-    .edit-member-checkbox:checked~.edit-member-section {
-        display: unset;
-    }
-
-    .edit-member-section {
-        display: none;
-        position: absolute;
-        top: 40px;
-        right: 5px;
-        background-color: white;
-        z-index: 1;
-    }
-
-
-
-    .edit-member-section>* {
-        display: block;
-        margin: 0;
-        color: black;
-        padding: 5px 10px;
-        width: 70px;
-        height: 20px;
-        cursor: pointer;
-    }
-
-    .edit-member-section>*:hover {
-        background-color: rgb(167, 167, 167);
-    }
-
-    * {
-        font-family: "roboto";
-    }
-
-    html,
-    body {
-        background-color: rgb(27, 27, 34);
-        margin: 0;
-        padding: 0;
-        color: white;
-        height: 100%;
-    }
-
-    body {
-        display: grid;
-        grid-template-areas:
-            "nav"
-            "main";
-        grid-template-columns: 1fr;
-        grid-template-rows: 50px 1fr;
-    }
-
-    a {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    nav {
-        grid-area: nav;
-        background-color: rgb(73, 73, 73);
-        display: flex;
-        padding: 7px 15px;
-        box-sizing: border-box;
-    }
-
-    .nav-item {
-        cursor: pointer;
-        margin-inline: 10px !important;
-    }
-
-    .nav-text {
-        text-decoration: none;
-        color: white;
-        margin-bottom: -7px;
-    }
-
-    .nav-text>h3 {
-        font-size: 1.2rem;
-        margin: 5px 0 0 0;
-    }
-
-    .nav-text.selected,
-    .nav-text:hover {
-        border-bottom: solid;
-    }
-
-    .nav-separator {
-        margin: auto;
-    }
-
-    .nav-create {
-        position: relative;
-        display: flex;
-        gap: 5px;
-        box-sizing: border-box;
-        padding: 5px;
-        background-color: rgb(46, 124, 212);
-        border-radius: 5px;
-        box-shadow: 1px 1px 3px rgb(31, 31, 31);
-    }
-
-    .nav-create>p {
-        margin: 0;
-        font-size: 1.3rem;
-    }
-
-    .create-dropdown {
-        position: absolute;
-        left: 0;
-        top: 100%;
-        width: 100%;
-        background-color: rgb(68, 68, 79);
-        display: none;
-    }
-
-    .create-dropdown-elem {
-        display: block;
-        width: 100%;
-        margin-right: auto;
-        padding: 5px;
-        box-sizing: border-box;
-    }
-
-    .create-dropdown-elem:hover {
-        background-color: rgb(45, 45, 53);
-    }
-
-    .nav-create:hover .create-dropdown {
-        display: block;
-    }
 </style>
 
 </html>

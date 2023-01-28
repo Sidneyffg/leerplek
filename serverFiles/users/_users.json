@@ -5,11 +5,14 @@
     "password": "$2b$10$uXmt7p4Bxd5t1luaEMy7auwExqW4GWjwz6n9hEkPJqZ5wFyjaiQKS",
     "verified": true,
     "tokens": [
-      "cf728980-9e6c-11ed-b716-05a769600162"
+      "cf728980-9e6c-11ed-b716-05a769600162",
+      "2750b150-9f16-11ed-aa93-e9acc9aecf1f"
     ],
     "data": {
       "sets": [],
-      "classes": ["0fd22b40-9d80-11ed-9dcb-7f04a35906c9"]
+      "classes": [
+        "0fd22b40-9d80-11ed-9dcb-7f04a35906c9"
+      ]
     },
     "id": "dc2aa018-196b-40e8-afe7-710699dc00d1"
   }

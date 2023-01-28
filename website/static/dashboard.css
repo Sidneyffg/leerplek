@@ -1,0 +1,219 @@
+.background-darkener {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .25);
+}
+
+.class-create-section {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 450px;
+    color: white;
+    background-color: rgb(73, 73, 73);
+    box-sizing: border-box;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.class-create-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.class-create-top>h1 {
+    margin: 0;
+}
+
+.class-create-top>img {
+    height: 30px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+#class-name {
+    width: 100%;
+    box-sizing: border-box;
+    height: 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(27, 27, 34);
+    color: white;
+    padding: 5px 10px;
+}
+
+.class-language-container {
+    width: min-content;
+    margin-top: 20px;
+}
+
+#class-language {
+    width: 150px;
+    background-color: rgb(46, 124, 212);
+    height: 25px;
+    border: none;
+    outline: none;
+}
+
+* {
+    font-family: "roboto";
+}
+
+html,
+body {
+    background-color: rgb(27, 27, 34);
+    margin: 0;
+    padding: 0;
+    color: white;
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+        "nav nav"
+        "main homework";
+    grid-template-columns: 1fr 300px;
+    grid-template-rows: 50px 1fr;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav {
+    grid-area: nav;
+    background-color: rgb(73, 73, 73);
+    display: flex;
+    padding: 7px 15px;
+    box-sizing: border-box;
+}
+
+.nav-item {
+    cursor: pointer;
+    margin-inline: 10px !important;
+}
+
+.nav-text {
+    text-decoration: none;
+    color: white;
+    margin-bottom: -7px;
+}
+
+.nav-text>h3 {
+    font-size: 1.2rem;
+    margin: 5px 0 0 0;
+}
+
+.nav-text.selected,
+.nav-text:hover {
+    border-bottom: solid;
+}
+
+.nav-separator {
+    margin: auto;
+}
+
+.nav-create {
+    position: relative;
+    display: flex;
+    gap: 5px;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: rgb(46, 124, 212);
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgb(31, 31, 31);
+}
+
+.nav-create>p {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.create-dropdown {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: rgb(68, 68, 79);
+    display: none;
+}
+
+.create-dropdown-elem {
+    display: block;
+    width: 100%;
+    margin-right: auto;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.create-dropdown-elem:hover {
+    background-color: rgb(45, 45, 53);
+}
+
+.nav-create:hover .create-dropdown {
+    display: block;
+}
+
+.homework-section {
+    grid-area: homework;
+    background-color: rgb(37, 37, 46);
+    border-left: 1px solid rgb(68, 68, 79);
+    padding: 10px;
+    color: rgb(164, 164, 164);
+}
+
+.homework-class-selector {
+    margin-top: -5px;
+}
+
+.homework-class-selector>select {
+    background-color: rgb(37, 37, 46);
+    color: rgb(164, 164, 164);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.homework-class-selector option {
+    width: 400px;
+}
+
+.homework-item {
+    background-color: rgb(68, 68, 79);
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: flex;
+}
+
+.homework-item-left>*,
+.homework-data-section>* {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.homework-item-right {
+    margin-left: auto;
+}
+
+.homework-data-section {
+    display: flex;
+}
+
+.homework-data-section>*:first-child {
+    margin-left: auto;
+}
+
+.homework-data-section>img {
+    height: 20px;
+}

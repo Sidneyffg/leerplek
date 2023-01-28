@@ -11,7 +11,7 @@ app.use("/images", express.static("images"))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 app.use(cookie())
-app.use("/website", express.static("website"))
+app.use("/static", express.static("website/static"))
 app.set("view engine", "ejs")
 
 app.get("/dashboard", (req, res) => {
@@ -50,23 +50,18 @@ app.get("/signup", (req, res) => {
 })
 
 app.post("/signup", (req, res) => {
-    console.log("recieved")
     if (req.body.email.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i) == null) {
         res.redirect("/signup");
-        console.log("emain")
         return
     }
     if (req.body.password.length < 8) {
         res.redirect("/signup");
-        console.log("password")
         return
     }
     if (req.body.name == "") {
         res.redirect("/signup");
-        console.log("name")
         return
     }
-    console.log("passed")
     users.newUser({
         name: req.body.name,
         email: req.body.email.toLocaleLowerCase(),
@@ -81,11 +76,9 @@ app.post("/signup", (req, res) => {
     let token = users.addTokenToUser({ email: req.body.email })
     res.cookie("loginInfo", JSON.stringify({ email: req.body.email, token: token }))
     res.redirect("/dashboard")
-    console.log("redirected")
 })
 
 app.get("/verify", (req, res) => {
-    console.log(req.query)
     users.verifyUser({ email: decodeURIComponent(req.query.email), code: decodeURIComponent(req.query.code) });
     res.sendFile(websiteUrl + "/close/index.html")
 })
@@ -111,7 +104,6 @@ app.get("/classes/*", (req, res) => {
         res.redirect("/dashboard");
         return
     }
-    console.log(selectedClass)
     res.render(websiteUrl + "/classes/class.ejs", { classInfo: selectedClass,userData: user, languages: classes.languages, roles: classes.roles })
 })
 
