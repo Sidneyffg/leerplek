@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Class</title>
+    <link rel="stylesheet" href="/static/std.css">
     <link rel="stylesheet" href="/static/class.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
 </head>
@@ -72,7 +73,7 @@
             <div class="overview-updates">
                 <div class="updates-section-top-container">
                     <div class="updates-section-top">
-                        <h3>Homework</h3>
+                        <h3>Updates</h3>
                         <% if(classInfo.members.find(e=> e.id == userData.id).role>0) { %>
                             <img src="/images/add.svg" alt="add">
                             <%}%>
@@ -80,11 +81,19 @@
                     <div class="updates-line"></div>
                 </div>
                 <div class="update-container">
-
+                    <div class="update-icon-container">
+                        <img src="/images/update-icons/book.svg" class="flipped-img">
+                    </div>
+                    <div class="update-name-container">
+                        <h3>H3 paragraaf A</h3>
+                        <p>5 jan.</p>
+                    </div>
+                    <div></div>
+                    <img src="/images/more.svg" alt="open">
                 </div>
             </div>
         </div>
-        <div class="section">
+        <div class="section" style="display: none;">
 
         </div>
         <div class="section" style="display: none;">
@@ -163,9 +172,9 @@
             </div>
         </div>
     </div>
-    <div class="homework-section">
+    <div class="side-section">
         <h2 style="margin-bottom: 0;">Homework</h2>
-        <a href="./<%=classInfo.id%>/homework" class="homework-item">
+        <a href="./<%=classInfo.id%>/homework" class="side-section-item">
             <div class="homework-item-left">
                 <h4 class="homework-title">H3 paragraaf A</h4>
                 <div class="homework-data-section" style="margin-left: auto;">
@@ -178,6 +187,60 @@
             </div>
             <img src="/images/more.svg" alt="more" class="homework-item-right">
         </a>
+    </div>
+    <div class="background-darkener" id="background-darkener" style="display: none;">
+        <div class="class-create-section">
+            <div class="class-create-top">
+                <h1>Create a new class</h1>
+                <img src="/images/close.svg" alt="close"
+                    onclick="document.getElementById('background-darkener').style.display='none'">
+            </div>
+            <form action="/classes/new" method="POST">
+                <label for="class-name">Class name:</label>
+                <input name="name" autocomplete="off" type="text" id="class-name">
+                <div class="class-language-container">
+                    <label for="class-language">Language:</label>
+                    <select name="language" id="class-language">
+                        <option value="0">French</option>
+                        <option value="1">German</option>
+                        <option value="2">English</option>
+                        <option value="3">Spanish</option>
+                        <option value="4">Chinese</option>
+                        <option value="5">Other</option>
+                        <option value="6">Non specific</option>
+                    </select>
+                </div>
+                <button class="" type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+    <div class="background-darkener" id="new-update" style="display: unset;">
+        <div class="class-create-section">
+            <div class="class-create-top">
+                <h1>Create a new update</h1>
+                <img src="/images/close.svg" alt="close"
+                    onclick="document.getElementById('background-darkener').style.display='none'">
+            </div>
+            <form class="create-update-form" action="/classes/new" method="POST">
+                <div class="new-update-title">
+                    <label>
+                        Update name:
+                        <input name="name" autocomplete="off" type="text" class="new-update-name">
+                    </label>
+                    <div include="form-input-select()">
+                        <select name="update-type" required>
+                            <option value="" hidden>Update type:</option>
+
+                            <option value="0">Homework</option>
+                            <option value="1">Material</option>
+                            <option value="2">Messages</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="solid-line"></div>
+                <!--<button class="" type="submit">Post</button>-->
+            </form>
+        </div>
     </div>
 </body>
 <style>

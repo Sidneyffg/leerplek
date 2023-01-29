@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/static/dashboard.css">
+    <link rel="stylesheet" href="/static/std.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
@@ -24,7 +25,7 @@
         <div class="nav-separator"></div>
         <div class="nav-item nav-create">
             <p>Create</p>
-            <img src="/images/add.svg" alt="">
+            <img src="/images/add.svg" alt="new">
             <div class="create-dropdown">
                 <a href="/sets/new" class="create-dropdown-elem">Set</a>
                 <div href="/classes/new" class="create-dropdown-elem"
@@ -33,7 +34,7 @@
         </div>
         <img class="nav-item " src="/images/account.svg" alt="">
     </nav>
-    <div class="homework-section">
+    <div class="side-section">
         <h2 style="margin-bottom: 0;">Homework</h2>
         <div class="homework-class-selector">
             <select name="dog-names" class="homework-class-selector">
@@ -45,7 +46,7 @@
                     <%}%>
             </select>
         </div>
-        <a href="/class" class="homework-item">
+        <a href="/class" class="side-section-item">
             <div class="homework-item-left">
                 <h4 class="homework-title">H3 paragraaf A</h4>
                 <p class="homework-class">Frans 3ad</p>
