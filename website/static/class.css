@@ -305,10 +305,6 @@
     padding: 5px 10px;
 }
 
-.create-update-form {
-    height: 100%;
-}
-
 [include*="form-input-select()"] {
     display: block;
     padding: 0;
@@ -479,4 +475,15 @@
 
 .solid-line {
     margin-bottom: auto;
+}
+
+.upload-icons {
+    display: flex;
+    align-items: center;
+}
+
+.upload-icons> img {
+    height: 40px;
+    cursor: pointer;
+    margin-inline: 3px;
 }

@@ -214,14 +214,14 @@
             </form>
         </div>
     </div>
-    <div class="background-darkener" id="new-update" style="display: unset;">
+    <div class="background-darkener" id="new-update" style="display: none;">
         <div class="class-create-section">
             <div class="class-create-top">
                 <h1>Create a new update</h1>
                 <img src="/images/close.svg" alt="close"
                     onclick="document.getElementById('background-darkener').style.display='none'">
             </div>
-            <form class="create-update-form" action="/classes/new" method="POST">
+            <form action="/classes/new" method="POST">
                 <div class="new-update-title">
                     <label>
                         Update name:
@@ -237,7 +237,17 @@
                         </select>
                     </div>
                 </div>
+                <label>
+                    Description:
+                    <input name="description" autocomplete="off" type="text" class="new-update-name">
+                </label>
                 <div class="solid-line"></div>
+                <div class="upload-icons">
+                    <img src="/images/upload-icons/upload.svg" alt="upload" title="Upload set.">
+                    <img src="/images/upload-icons/cloud-upload.svg" alt="upload" title="Upload cloud set.">
+                    <img src="/images/upload-icons/link.svg" alt="upload" title="Enter link of set.">
+                    <img src="/images/upload-icons/add-box.svg" alt="upload" title="Create new set.">
+                </div>
                 <!--<button class="" type="submit">Post</button>-->
             </form>
         </div>
