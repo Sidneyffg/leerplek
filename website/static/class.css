@@ -291,18 +291,19 @@
     grid-template-columns: 1fr 200px;
     gap: 20px;
     width: 100%;
+    margin-bottom: 15px;
 }
 
-.new-update-name {
+.new-update-input {
     width: 100%;
     box-sizing: border-box;
-    height: 30px;
     outline: none;
     border: none;
     border-radius: 5px;
     background-color: rgb(27, 27, 34);
     color: white;
     padding: 5px 10px;
+    resize: none;
 }
 
 [include*="form-input-select()"] {
@@ -474,16 +475,41 @@
 }
 
 .solid-line {
-    margin-bottom: auto;
+    margin-top: 110px;
 }
 
 .upload-icons {
     display: flex;
-    align-items: center;
 }
 
-.upload-icons> img {
+.upload-icons>img {
     height: 40px;
     cursor: pointer;
     margin-inline: 3px;
+}
+
+.post-selected-set {
+    display: flex;
+    align-items: center;
+    border: solid white 1px;
+    padding: 0 5px;
+    border-radius: 5px;
+    margin-top: 7px;
+}
+
+.post-selected-set>h3 {
+    margin: 0;
+}
+
+.post-selected-set>img {
+    height: 30px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.update-post-btn {
+    margin-left: auto;
+    width: 80px;
+    height: 30px;
+    margin-top: 7px;
 }

@@ -8,6 +8,7 @@
     <title>Class</title>
     <link rel="stylesheet" href="/static/std.css">
     <link rel="stylesheet" href="/static/class.css">
+    <script src="/static/class.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
 </head>
 
@@ -75,7 +76,8 @@
                     <div class="updates-section-top">
                         <h3>Updates</h3>
                         <% if(classInfo.members.find(e=> e.id == userData.id).role>0) { %>
-                            <img src="/images/add.svg" alt="add">
+                            <img src="/images/add.svg" alt="add"
+                                onclick="document.getElementById('new-update').style.display='unset'">
                             <%}%>
                     </div>
                     <div class="updates-line"></div>
@@ -219,42 +221,47 @@
             <div class="class-create-top">
                 <h1>Create a new update</h1>
                 <img src="/images/close.svg" alt="close"
-                    onclick="document.getElementById('background-darkener').style.display='none'">
+                    onclick="document.getElementById('new-update').style.display='none'">
             </div>
-            <form action="/classes/new" method="POST">
+            <form action="/classes/updates/new" method="POST">
                 <div class="new-update-title">
                     <label>
-                        Update name:
-                        <input name="name" autocomplete="off" type="text" class="new-update-name">
+                        Name:
+                        <input name="name" required autocomplete="off" type="text" class="new-update-input"
+                            style="height: 30px;">
                     </label>
-                    <div include="form-input-select()">
+                    <div include="form-input-select()" onchange="createUpdateTypeChange(this.firstElementChild)">
                         <select name="update-type" required>
-                            <option value="" hidden>Update type:</option>
+                            <option value="" hidden>Type:</option>
 
                             <option value="0">Homework</option>
                             <option value="1">Material</option>
-                            <option value="2">Messages</option>
+                            <option value="2">Message</option>
                         </select>
                     </div>
                 </div>
                 <label>
                     Description:
-                    <input name="description" autocomplete="off" type="text" class="new-update-name">
+                    <textarea name="description" autocomplete="off" type="text" class="new-update-input"
+                        style="height: 120px;"></textarea>
                 </label>
+                <input type="date" name="date" gio style="display: none;">
                 <div class="solid-line"></div>
                 <div class="upload-icons">
-                    <img src="/images/upload-icons/upload.svg" alt="upload" title="Upload set.">
+                    <img src="/images/upload-icons/upload.svg" onclick="changeSelectedSet(true)" alt="upload"
+                        title="Upload personal set.">
                     <img src="/images/upload-icons/cloud-upload.svg" alt="upload" title="Upload cloud set.">
                     <img src="/images/upload-icons/link.svg" alt="upload" title="Enter link of set.">
                     <img src="/images/upload-icons/add-box.svg" alt="upload" title="Create new set.">
+                    <div class="post-selected-set" id="postSelectedSet">
+                        <h3>H3 paragraaf B</h3>
+                        <img src="/images/close.svg" alt="remove" onclick="changeSelectedSet(false)">
+                    </div>
+                    <button class="update-post-btn" type="submit">Post</button>
                 </div>
-                <!--<button class="" type="submit">Post</button>-->
             </form>
         </div>
     </div>
 </body>
-<style>
-
-</style>
 
 </html>
