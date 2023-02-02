@@ -245,8 +245,9 @@
                     <textarea name="description" autocomplete="off" type="text" class="new-update-input"
                         style="height: 120px;"></textarea>
                 </label>
-                <input type="date" name="date" gio style="display: none;">
-                <div class="solid-line"></div>
+                <input type="date" name="date" gio style="display: none;" id="updateDate">
+                <input type="time" name="time">
+                <div class="solid-line" id="updateLine"></div>
                 <div class="upload-icons">
                     <img src="/images/upload-icons/upload.svg" onclick="changeSelectedSet(true)" alt="upload"
                         title="Upload personal set.">

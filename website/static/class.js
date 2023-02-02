@@ -22,6 +22,8 @@ function showUploadSet() {
     for (let i = 0; i < 4; i++) {
         iconsContainer.children[i].style.display = "unset"
     }
+    document.getElementById("updateLine").style.marginTop = "32px";
+    document.getElementById("updateDate").style.display = "unset"
 }
 
 hideUploadSet()
@@ -31,4 +33,7 @@ function hideUploadSet() {
         iconsContainer.children[i].style.display = "none"
     }
     document.getElementById("postSelectedSet").style.display = "none"
+    document.getElementById("updateLine").style.marginTop = "110px";
+    document.getElementById("updateDate").style.display = "none"
+
 }
