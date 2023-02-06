@@ -28,21 +28,6 @@
                 <h3>Settings</h3>
             </div>
             <%}%>
-                <script>
-                    function openSection(section) {
-                        const sections = document.getElementsByClassName("section")
-                        const navTexts = document.getElementsByClassName("nav-text");
-                        for (let i = 0; i < sections.length; i++) {
-                            if (section == i) {
-                                sections[i].style.display = "block"
-                                navTexts[i].classList.add("selected")
-                            } else {
-                                sections[i].style.display = "none"
-                                navTexts[i].classList.remove("selected")
-                            }
-                        };
-                    }
-                </script>
                 <div class="nav-separator"></div>
                 <div class="nav-item nav-create">
                     <p>Create</p>
@@ -82,17 +67,26 @@
                     </div>
                     <div class="updates-line"></div>
                 </div>
-                <div class="update-container">
-                    <div class="update-icon-container">
-                        <img src="/images/update-icons/book.svg" class="flipped-img">
+                <% for(let i=0;i < classInfo.updates.length;i++){ %>
+                    <div class="update-container">
+                        <div class="update-icon-container">
+                            
+                            <% if(classInfo.updates[i].type == 'homework') {%>
+                                <img src="/images/update-icons/assignment.svg">
+                                <%}else if(classInfo.updates[i].type == 'material'){ %>
+                                    <img src="/images/update-icons/book.svg" class="flipped-img">
+                                    <%}else{%>
+                                        <img src="/images/update-icons/message.svg">
+                                        <%}%>
+                        </div>
+                        <div class="update-name-container">
+                            <h3><%= classInfo.updates[i].name %></h3>
+                            <p><%= timeConverter(classInfo.updates[i].creationDate) %></p>
+                        </div>
+                        <div></div>
+                        <img src="/images/more.svg" alt="open">
                     </div>
-                    <div class="update-name-container">
-                        <h3>H3 paragraaf A</h3>
-                        <p>5 jan.</p>
-                    </div>
-                    <div></div>
-                    <img src="/images/more.svg" alt="open">
-                </div>
+                    <% } %>
             </div>
         </div>
         <div class="section" style="display: none;">
@@ -231,12 +225,12 @@
                             style="height: 30px;">
                     </label>
                     <div include="form-input-select()" onchange="createUpdateTypeChange(this.firstElementChild)">
-                        <select name="update-type" required>
+                        <select name="type" required>
                             <option value="" hidden>Type:</option>
 
-                            <option value="0">Homework</option>
-                            <option value="1">Material</option>
-                            <option value="2">Message</option>
+                            <option value="homework">Homework</option>
+                            <option value="material">Material</option>
+                            <option value="message">Message</option>
                         </select>
                     </div>
                 </div>
@@ -245,8 +239,10 @@
                     <textarea name="description" autocomplete="off" type="text" class="new-update-input"
                         style="height: 120px;"></textarea>
                 </label>
-                <input type="date" name="date" gio style="display: none;" id="updateDate">
-                <input type="time" name="time">
+                <div id="updateDateContainer">
+                    <input type="date" name="date" id="updateDate">
+                    <input type="time" name="time">
+                </div>
                 <div class="solid-line" id="updateLine"></div>
                 <div class="upload-icons">
                     <img src="/images/upload-icons/upload.svg" onclick="changeSelectedSet(true)" alt="upload"
@@ -258,6 +254,7 @@
                         <h3>H3 paragraaf B</h3>
                         <img src="/images/close.svg" alt="remove" onclick="changeSelectedSet(false)">
                     </div>
+                    <input type="text" name="classId" style="display: none;" value="<%= classInfo.id %>">
                     <button class="update-post-btn" type="submit">Post</button>
                 </div>
             </form>

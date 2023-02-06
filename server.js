@@ -99,12 +99,12 @@ app.get("/classes/*", (req, res) => {
         res.redirect("/dashboard")
         return
     }
-    let user = users.getUser({email: loginInfo.email})
-    if(!user.data.classes.includes(classId)){
+    let user = users.getUser({ email: loginInfo.email })
+    if (!user.data.classes.includes(classId)) {
         res.redirect("/dashboard");
         return
     }
-    res.render(websiteUrl + "/classes/class.ejs", { classInfo: selectedClass,userData: user, languages: classes.languages, roles: classes.roles })
+    res.render(websiteUrl + "/classes/class.ejs", { classInfo: selectedClass, userData: user, languages: classes.languages, roles: classes.roles, timeConverter: timeConverter })
 })
 
 app.post("/classes/new", (req, res) => {
@@ -123,6 +123,27 @@ app.post("/classes/new", (req, res) => {
     res.redirect("/classes/" + classId)
 })
 
+app.post("/classes/updates/new", (req, res) => {
+    const classId = req.body.classId;
+    let selectedClass = classes.getClass(classId)
+    if (!selectedClass) {
+        res.redirect("/classes/" + classId)
+        return
+    }
+    let loginInfo = JSON.parse(req.cookies.loginInfo ?? null)
+    if (!loginInfo || !users.checkToken(loginInfo.token, { email: loginInfo.email })) {
+        res.redirect("/login")
+        return
+    }
+    let user = users.getUser({ email: loginInfo.email })
+    if (!user.data.classes.includes(classId) || selectedClass.members.find(e => e.id == user.id).role == 0) {
+        res.redirect("/classes/" + classId);
+        return
+    }
+    classes.addUpdateToClass({ classId: classId, addedBy: user.id, dueDate: req.body.date, dueTime: req.body.time, type: req.body.type, setId: "setId komt hier", name: req.body.name, description: req.body.description })
+    res.redirect("/classes/" + classId);
+})
+
 /*console.log(sets.addSet({
     name: "very goed set",
     description: "yas",
@@ -132,6 +153,24 @@ app.post("/classes/new", (req, res) => {
     creatorId: users.getUser({email: "sidney.oostveen@gmail.com"}).id
 }))*/
 
+
+
+
+function timeConverter(UNIX_timestamp) {
+    const a = new Date(UNIX_timestamp);
+    const b = new Date(Date.now());
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    if(a.getDate() == b.getDate() && a > Date.now() - 864e5){
+        return `${a.getHours()}:${a.getMinutes()}`
+    }
+    if(a.getDate() == b.getDate() - 1 && a > Date.now() - 864e5*2){
+        return "Yesterday"
+    }
+    if(a.getFullYear() !== b.getFullYear()){
+        return `${a.getDate()} ${months[a.getMonth()]} ${a.getFullYear()}`
+    }
+    return `${a.getDate()} ${months[a.getMonth()]}`
+}
 
 app.listen(3000, () => {
     console.log("Server running:)")

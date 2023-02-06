@@ -20,7 +20,7 @@ class Classes {
             creationDate: Date.now(),
             id: uuid.v1(),
             joinCode: this.genRanChars(6),
-            homework: []
+            updates: []
         }
         this.classes.push(newClass)
         this.saveClasses();
@@ -33,25 +33,41 @@ class Classes {
         return selectedClass
     }
 
-    addHomeworkToClass(homeworkData) {
-        let selectedClass = this.classes.find(e => e.id == homeworkData.classId);
+    addUpdateToClass(updateData) {
+        let selectedClass = this.classes.find(e => e.id == updateData.classId);
         if (!selectedClass) return false;
-        let homework = {
-            addedBy: homeworkData.addedBy,
-            setId: homeworkData.setId,
+        let update = {
+            name: updateData.name,
+            description: updateData.description,
+            type: updateData.type,
+            addedBy: updateData.addedBy,
+            material: null,
+            homeworkData: null,
             creationDate: Date.now(),
-            dueDate: Date.now() + homeworkData.dueTime,
             id: uuid.v1(),
             results: []
         }
-        for (let i = 0; i < selectedClass.members.length; i++) {
-            homework.results.push({
-                finished: false
-            })
+        if(updateData.type == "material" || updateData.type == "homework"){
+            update.material = {
+                id: updateData.setId,
+                results: []
+            }
+            for (let i = 0; i < selectedClass.members.length; i++) {
+                update.material.results.push({
+                    finished: false,
+                    data: {}
+                })
+            }
         }
-        selectedClass.homework.push(homework)
+        if(updateData.type == "homework"){
+            update.homeworkData = {
+                dueDate: updateData.dueDate, //moet nog omgezet worden in 1 num m//
+                dueTime: updateData.dueTime
+            };
+        }
+        selectedClass.updates.unshift(update)
         this.saveClasses();
-        return id;
+        return true;
     }
 
     genRanChars(length) {

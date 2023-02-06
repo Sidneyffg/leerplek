@@ -31,6 +31,243 @@
     ],
     "creationDate": 1674740886516,
     "id": "0fd22b40-9d80-11ed-9dcb-7f04a35906c9",
-    "homework": []
+    "updates": [
+      {
+        "name": "sdfsdf",
+        "description": "d",
+        "type": "message",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "material": null,
+        "homeworkData": null,
+        "creationDate": 1675453979080,
+        "id": "5c1c5480-a3fc-11ed-ba7c-ef50de555935",
+        "results": []
+      },
+      {
+        "name": "ksdjf",
+        "description": "sdfsdf",
+        "type": "material",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "material": {
+          "id": "setId komt hier",
+          "results": [
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            }
+          ]
+        },
+        "homeworkData": null,
+        "creationDate": 1675453965625,
+        "id": "54174290-a3fc-11ed-ba7c-ef50de555935",
+        "results": []
+      },
+      {
+        "name": "huiswerk nieuw nieuw",
+        "description": "ddd",
+        "type": "homework",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "material": {
+          "id": "setId komt hier",
+          "results": [
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            }
+          ]
+        },
+        "homeworkData": {
+          "dueDate": "2023-02-08",
+          "dueTime": "02:46"
+        },
+        "creationDate": 1675453323491,
+        "id": "d5596330-a3fa-11ed-a112-5b7c823ecc3b",
+        "results": []
+      },
+      {
+        "name": "je vader is bol",
+        "description": "Heel belangrijk maak nu af!!! or else",
+        "type": "homework",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "material": {
+          "id": "setId komt hier",
+          "results": [
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            }
+          ]
+        },
+        "homeworkData": {
+          "dueDate": "2023-02-08",
+          "dueTime": "00:00"
+        },
+        "creationDate": 1675449568505,
+        "id": "1733fe90-a3f2-11ed-8800-3bdd9fe38eac",
+        "results": []
+      },
+      {
+        "name": "je vader is bol",
+        "description": "Heel belangrijk maak nu af!!! or else",
+        "type": "homework",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "material": {
+          "id": "setId komt hier",
+          "results": [
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            }
+          ]
+        },
+        "homeworkData": {
+          "dueDate": "2023-02-08",
+          "dueTime": "00:00"
+        },
+        "creationDate": 1673201982000,
+        "id": "1733fe90-a3f2-11ed-8800-3bdd9fe38eac",
+        "results": []
+      },
+      {
+        "name": "huiswerk woensdag",
+        "description": "maak af voor woensdag",
+        "type": "homework",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "material": {
+          "id": "setId komt hier",
+          "results": [
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            }
+          ]
+        },
+        "homeworkData": {
+          "dueDate": "2023-02-16",
+          "dueTime": "01:29"
+        },
+        "creationDate": 1675452291128,
+        "id": "6e037290-a3f8-11ed-9b39-e1e80d9d168b",
+        "results": []
+      },
+      {
+        "name": "huiswerk nieuw",
+        "description": "ddd",
+        "type": "homework",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "material": {
+          "id": "setId komt hier",
+          "results": [
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            },
+            {
+              "finished": false,
+              "data": {}
+            }
+          ]
+        },
+        "homeworkData": {
+          "dueDate": "2023-02-08",
+          "dueTime": "01:47"
+        },
+        "creationDate": 1675453296635,
+        "id": "c5577cb0-a3fa-11ed-9b39-e1e80d9d168b",
+        "results": []
+      }
+    ]
   }
 ]

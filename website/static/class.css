@@ -79,6 +79,7 @@
 
 .update-name-container {
     padding-top: 3px;
+    max-width: 100%;
 }
 
 .update-name-container>* {
@@ -474,8 +475,10 @@
     color: #C7C7C7;
 }
 
-#updateDate {
+#updateDateContainer {
+    display: flex;
     margin-top: 20px;
+    gap: 20px;
 }
 
 .solid-line {
