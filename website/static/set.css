@@ -1,0 +1,23 @@
+body {
+    grid-template-areas:
+        "nav"
+        "main" !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 50px 1fr !important;
+}
+
+.set-name {
+    margin: 20px;
+}
+
+main {
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+        "practice right";
+    grid-template-columns: 200px 1fr;
+    height: 100px;
+}

@@ -70,18 +70,22 @@
                 <% for(let i=0;i < classInfo.updates.length;i++){ %>
                     <div class="update-container">
                         <div class="update-icon-container">
-                            
-                            <% if(classInfo.updates[i].type == 'homework') {%>
+
+                            <% if(classInfo.updates[i].type=='homework' ) {%>
                                 <img src="/images/update-icons/assignment.svg">
-                                <%}else if(classInfo.updates[i].type == 'material'){ %>
+                                <%}else if(classInfo.updates[i].type=='material' ){ %>
                                     <img src="/images/update-icons/book.svg" class="flipped-img">
                                     <%}else{%>
                                         <img src="/images/update-icons/message.svg">
                                         <%}%>
                         </div>
                         <div class="update-name-container">
-                            <h3><%= classInfo.updates[i].name %></h3>
-                            <p><%= timeConverter(classInfo.updates[i].creationDate) %></p>
+                            <h3>
+                                <%= classInfo.updates[i].name %>
+                            </h3>
+                            <p>
+                                <%= timeConverter(classInfo.updates[i].creationDate) %>
+                            </p>
                         </div>
                         <div></div>
                         <img src="/images/more.svg" alt="open">
@@ -170,19 +174,26 @@
     </div>
     <div class="side-section">
         <h2 style="margin-bottom: 0;">Homework</h2>
-        <a href="./<%=classInfo.id%>/homework" class="side-section-item">
-            <div class="homework-item-left">
-                <h4 class="homework-title">H3 paragraaf A</h4>
-                <div class="homework-data-section" style="margin-left: auto;">
-                    <p>5d&nbsp;</p>
-                    <img src="/images/clock.svg" onerror="this.style.display='none'" style="margin-top: -1px;">
-                    <p>&nbsp;-&nbsp;</p>
-                    <p>32w&nbsp;</p>
-                    <img src="/images/checklist.svg" onerror="this.style.display = 'none'">
-                </div>
-            </div>
-            <img src="/images/more.svg" alt="more" class="homework-item-right">
-        </a>
+        <% for(let i=0;i<classInfo.updates.length;i++) {%>
+            <% if(classInfo.updates[i].type=="homework" && classInfo.updates[i].material.results.find(e=> e.memberId ==
+                userData.id).finished == false) {%>
+                <a href="./<%=classInfo.id%>/homework" class="side-section-item">
+                    <div class="homework-item-left">
+                        <h4 class="homework-title">
+                            <%= classInfo.updates[i].name %>
+                        </h4>
+                        <div class="homework-data-section" style="margin-left: auto;">
+                            <p>5d&nbsp;</p>
+                            <img src="/images/clock.svg" onerror="this.style.display='none'" style="margin-top: -1px;">
+                            <p>&nbsp;-&nbsp;</p>
+                            <p>??w&nbsp;</p>
+                            <img src="/images/checklist.svg" onerror="this.style.display = 'none'">
+                        </div>
+                    </div>
+                    <img src="/images/more.svg" alt="more" class="homework-item-right">
+                </a>
+                <% } %>
+                    <% } %>
     </div>
     <div class="background-darkener" id="background-darkener" style="display: none;">
         <div class="class-create-section">

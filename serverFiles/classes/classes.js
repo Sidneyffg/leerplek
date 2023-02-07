@@ -44,22 +44,22 @@ class Classes {
             material: null,
             homeworkData: null,
             creationDate: Date.now(),
-            id: uuid.v1(),
-            results: []
+            id: uuid.v1()
         }
-        if(updateData.type == "material" || updateData.type == "homework"){
+        if (updateData.type == "material" || updateData.type == "homework") {
             update.material = {
                 id: updateData.setId,
                 results: []
             }
             for (let i = 0; i < selectedClass.members.length; i++) {
                 update.material.results.push({
+                    memberId: selectedClass.members[i].id,
                     finished: false,
                     data: {}
                 })
             }
         }
-        if(updateData.type == "homework"){
+        if (updateData.type == "homework") {
             update.homeworkData = {
                 dueDate: updateData.dueDate, //moet nog omgezet worden in 1 num m//
                 dueTime: updateData.dueTime

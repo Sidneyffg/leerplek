@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/set.css">
+    <link rel="stylesheet" href="/static/std.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <a href="/dashboard" class="nav-item nav-text">
+            <h3>Dashboard</h3>
+        </a>
+        <a href="/sets" class="nav-item nav-text selected">
+            <h3>Your Sets</h3>
+        </a>
+        <a href="/classes" class="nav-item nav-text">
+            <h3>Classes</h3>
+        </a>
+        <div class="nav-separator"></div>
+        <div class="nav-item nav-create">
+            <p>Create</p>
+            <img src="/images/add.svg" alt="new">
+            <div class="create-dropdown">
+                <a href="/sets/new" class="create-dropdown-elem">Set</a>
+                <div href="/classes/new" class="create-dropdown-elem"
+                    onclick="document.getElementById('background-darkener').style.display='inherit'">Class</div>
+            </div>
+        </div>
+        <img class="nav-item " src="/images/account.svg" alt="">
+    </nav>
+    <main>
+        <h1 class="set-name">Name of set</h1>
+        <div class="practice-options">
+
+        </div>
+    </main>
+    <div class="background-darkener" id="background-darkener" style="display: none;">
+        <div class="class-create-section">
+            <div class="class-create-top">
+                <h1>Create a new class</h1>
+                <img src="/images/close.svg" alt="close"
+                    onclick="document.getElementById('background-darkener').style.display='none'">
+            </div>
+            <form action="/classes/new" method="POST">
+                <label for="class-name">Class name:</label>
+                <input name="name" autocomplete="off" type="text" id="class-name">
+                <div class="class-language-container">
+                    <label for="class-language">Language:</label>
+                    <select name="language" id="class-language">
+                        <option value="0">French</option>
+                        <option value="1">German</option>
+                        <option value="2">English</option>
+                        <option value="3">Spanish</option>
+                        <option value="4">Chinese</option>
+                        <option value="5">Other</option>
+                        <option value="6">Non specific</option>
+                    </select>
+                </div>
+                <button class="" type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

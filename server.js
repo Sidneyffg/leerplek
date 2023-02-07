@@ -87,6 +87,10 @@ app.get("/sets/new", (req, res) => {
     res.sendFile(websiteUrl + "/sets/new/index.html")
 })
 
+app.get("/set/*", (req, res) => {
+    res.render(websiteUrl + "/set.ejs")
+})
+
 app.get("/classes/*", (req, res) => {
     let classId = req.url.split("/")[2];
     let selectedClass = classes.getClass(classId)
@@ -160,13 +164,13 @@ function timeConverter(UNIX_timestamp) {
     const a = new Date(UNIX_timestamp);
     const b = new Date(Date.now());
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    if(a.getDate() == b.getDate() && a > Date.now() - 864e5){
+    if (a.getDate() == b.getDate() && a > Date.now() - 864e5) {
         return `${a.getHours()}:${a.getMinutes()}`
     }
-    if(a.getDate() == b.getDate() - 1 && a > Date.now() - 864e5*2){
+    if (a.getDate() == b.getDate() - 1 && a > Date.now() - 864e5 * 2) {
         return "Yesterday"
     }
-    if(a.getFullYear() !== b.getFullYear()){
+    if (a.getFullYear() !== b.getFullYear()) {
         return `${a.getDate()} ${months[a.getMonth()]} ${a.getFullYear()}`
     }
     return `${a.getDate()} ${months[a.getMonth()]}`
