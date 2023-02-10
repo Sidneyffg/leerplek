@@ -16,6 +16,7 @@ function createUpdateTypeChange(e) {
 
 function changeSelectedSet(selectedSet) {
     setSelected = selectedSet;
+    hideUploadSet()
     showUploadSet()
 }
 
