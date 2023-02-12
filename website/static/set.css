@@ -15,7 +15,7 @@ main {
     grid-template-areas:
         "set-name set-name"
         "practice set-preview";
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: minmax(200px, 20%) 1fr;
     grid-template-rows: 60px 1fr;
 }
 
@@ -38,6 +38,9 @@ main {
     align-items: center;
     flex-flow: column nowrap;
     margin-bottom: 10px;
+    margin-left: auto;
+    width: 200px;
+    height: 120px;
 }
 
 .practice-option>* {
@@ -48,7 +51,7 @@ main {
     grid-area: set-preview;
     width: 900px;
     height: 500px;
-    margin-inline: auto;
+    margin-left: 10px;
     background-color: rgb(37, 37, 46);
     border: 1px solid rgb(68, 68, 79);
     border-radius: 5px;

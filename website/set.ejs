@@ -52,19 +52,19 @@
         </div>
         <div class="set-preview">
             <div class="set-preview-top">
-                <button>
+                <button onclick="previousWord()">
                     <img src="/images/more.svg" class="flipped-img" alt="back">
                 </button>
                 <div class="set-preview-top-center">
-                    <p>13</p>
+                    <p id="selectedWord">1</p>
                     <p>&nbsp;/&nbsp;</p>
-                    <p>31</p>
+                    <p><%= setInfo.words.length%></p>
                 </div>
-                <button>
+                <button onclick="nextWord()">
                     <img src="/images/more.svg" alt="back">
                 </button>
             </div>
-            <h3 id="set-preview-word" onclick="console.log('click')">Ello</h3>
+            <h1 id="set-preview-word" onclick="console.log('click')"><%= setInfo.words[0] %></h1>
         </div>
     </main>
     <div class="background-darkener" id="background-darkener" style="display: none;">
@@ -89,10 +89,26 @@
                         <option value="6">Non specific</option>
                     </select>
                 </div>
-                <button class="" type="submit">Create</button>
+                <button type="submit">Create</button>
             </form>
         </div>
     </div>
 </body>
+<script>
+    let words = JSON.parse('<%- JSON.stringify(setInfo.words) %>');
+    let selectedWord = 0;
+    function nextWord() {
+        if(selectedWord == words.length - 1) return
+        selectedWord++;
+        document.getElementById("set-preview-word").innerHTML = words[selectedWord];
+        document.getElementById("selectedWord").innerHTML = selectedWord+1;
+    }
 
+    function previousWord() {
+        if(selectedWord == 0) return
+        selectedWord--;
+        document.getElementById("set-preview-word").innerHTML = words[selectedWord];
+        document.getElementById("selectedWord").innerHTML = selectedWord+1;
+    }
+</script>
 </html>

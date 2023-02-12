@@ -88,7 +88,8 @@ app.get("/sets/new", (req, res) => {
 })
 
 app.get("/set/*", (req, res) => {
-    res.render(websiteUrl + "/set.ejs")
+    let selectedSet = sets.getSet("db06ec30-a64d-11ed-82be-9bb81066d880");
+    res.render(websiteUrl + "/set.ejs", {setInfo: selectedSet})
 })
 
 app.get("/classes/*", (req, res) => {
