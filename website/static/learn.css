@@ -1,0 +1,70 @@
+:root {
+  --main-color: black;
+  --nav-color: rgb(20, 20, 20);
+  --main-color-trans: rgb(20, 20, 20);
+  --text-color: white;
+  --text-color-trans: rgb(180, 180, 180);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+nav {
+  height: 5rem;
+  box-sizing: border-box;
+  padding: .75rem !important;
+  background: var(--nav-color) !important;
+}
+
+nav img {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-right: 1rem;
+}
+
+nav .modus-dropdown {
+  position: relative;
+  display: block;
+  border-radius: .6rem;
+  height: 100%;
+  width: 10rem;
+}
+
+nav .modus-dropdown>label {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: .6rem;
+  padding: .85rem;
+  box-sizing: border-box;
+}
+
+nav .modus-dropdown>ul {
+  display: none;
+  position: absolute;
+  width: 10rem;
+  height: 8rem;
+  border-radius: .6rem;
+  background: var(--nav-color);
+}
+
+#modus-switch:checked ~ .modus-dropdown>ul {
+  display: block;
+}
+
+#modus-switch:checked ~ .modus-dropdown::after {
+  transform: rotate(180deg);
+}
+
+nav .modus-dropdown::after {
+  content: "\e5cf";
+  font-family: "Material Symbols Outlined";
+  font-size: 1.5rem;
+  position: absolute;
+  top: calc(50% - .85rem);
+  right: 1rem;
+  pointer-events: none;
+  transition: transform .3s ease;
+}

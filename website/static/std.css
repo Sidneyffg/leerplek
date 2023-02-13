@@ -1,10 +1,17 @@
+:root {
+  --main-color: black;
+  --main-color-trans: rgb(30, 30, 30);
+  --text-color: white;
+  --text-color-trans: rgb(180, 180, 180);
+}
+
 * {
     font-family: "roboto";
 }
 
 html,
 body {
-    background-color: rgb(27, 27, 34);
+    background-color: var(--main-color);
     margin: 0;
     padding: 0;
     color: white;
@@ -27,7 +34,7 @@ a {
 
 nav {
     grid-area: nav;
-    background-color: rgb(73, 73, 73);
+    background-color: var(--main-color);
     display: flex;
     padding: 7px 15px;
     box-sizing: border-box;
@@ -79,7 +86,7 @@ nav {
     left: 0;
     top: 100%;
     width: 100%;
-    background-color: rgb(68, 68, 79);
+    background-color: var(--main-color-trans);
     display: none;
 }
 
@@ -102,13 +109,13 @@ nav {
 .side-section {
     grid-area: to-do;
     background-color: rgb(37, 37, 46);
-    border-left: 1px solid rgb(68, 68, 79);
+    border-left: 1px solid var(--main-color-trans);
     padding: 10px;
     color: rgb(164, 164, 164);
 }
 
 .side-section-item {
-    background-color: rgb(68, 68, 79);
+    background-color: var(--main-color-trans);
     padding: 10px;
     color: white;
     border-radius: 5px;
