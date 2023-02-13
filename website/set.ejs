@@ -35,12 +35,14 @@
         <img class="nav-item " src="/images/account.svg" alt="">
     </nav>
     <main>
-        <h1 class="set-name">Name of set</h1>
+        <h1 class="set-name">
+            <%= setInfo.name %>
+        </h1>
         <div class="practice-options">
-            <div class="practice-option">
+            <a href="/set/<%=setInfo.id%>/learn" class="practice-option">
                 <h3>Learn</h3>
                 <img src="/images/practice-icons/learn.svg">
-            </div>
+            </a>
             <div class="practice-option">
                 <h3>Quiz</h3>
                 <img src="/images/practice-icons/quiz.svg">
@@ -50,7 +52,7 @@
                 <img src="/images/practice-icons/quiz.svg">
             </div>
         </div>
-        <div class="set-preview">
+        <div class="set-preview" id="setPreview">
             <div class="set-preview-top">
                 <button onclick="previousWord()">
                     <img src="/images/more.svg" class="flipped-img" alt="back">
@@ -58,13 +60,17 @@
                 <div class="set-preview-top-center">
                     <p id="selectedWord">1</p>
                     <p>&nbsp;/&nbsp;</p>
-                    <p><%= setInfo.words.length%></p>
+                    <p>
+                        <%= setInfo.words.length%>
+                    </p>
                 </div>
                 <button onclick="nextWord()">
                     <img src="/images/more.svg" alt="back">
                 </button>
             </div>
-            <h1 id="set-preview-word" onclick="console.log('click')"><%= setInfo.words[0] %></h1>
+            <h1 id="set-preview-word">
+                <%= setInfo.words[0] %>
+            </h1>
         </div>
     </main>
     <div class="background-darkener" id="background-darkener" style="display: none;">
@@ -98,17 +104,29 @@
     let words = JSON.parse('<%- JSON.stringify(setInfo.words) %>');
     let selectedWord = 0;
     function nextWord() {
-        if(selectedWord == words.length - 1) return
+        if (selectedWord == words.length - 1) return
         selectedWord++;
         document.getElementById("set-preview-word").innerHTML = words[selectedWord];
-        document.getElementById("selectedWord").innerHTML = selectedWord+1;
+        document.getElementById("selectedWord").innerHTML = selectedWord + 1;
     }
 
     function previousWord() {
-        if(selectedWord == 0) return
+        if (selectedWord == 0) return
         selectedWord--;
         document.getElementById("set-preview-word").innerHTML = words[selectedWord];
-        document.getElementById("selectedWord").innerHTML = selectedWord+1;
+        document.getElementById("selectedWord").innerHTML = selectedWord + 1;
     }
+    const setPreview = document.getElementById("setPreview")
+    setPreview.addEventListener("click", e => {
+        if (e.target.tagName !== "BUTTON") {
+            setPreview.style.transition = "all ease-in .2s"
+            setPreview.style.transform = "rotate3d(0,1,0,90deg)"
+            setTimeout(() => {
+                setPreview.style.transition = "all ease-out .2s"
+                setPreview.style.transform = "rotate3d(0,0,0,0deg)"
+            }, 200)
+        }
+    })
 </script>
+
 </html>
