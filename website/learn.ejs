@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="/static/learn.js" type="module"></script>
+</head>
+
+<body>
+    <h3 id="word">Word</h3>
+    <input type="text" id="translationInput">
+    <div id="multipleChoice">
+        <button onclick="awnser(0)">translation1</button>
+        <button onclick="awnser(1)">translation2</button>
+        <button onclick="awnser(2)">translation3</button>
+        <button onclick="awnser(3)">translation4</button>
+    </div>
+    <button onclick="responsiveVoice.speak(`Nó cuối cùng cũng hoạt động!`,'Vietnamese Male')">play</button>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=7p8eOEwd"></script>
+</body>

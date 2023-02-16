@@ -87,9 +87,9 @@ app.get("/sets/new", (req, res) => {
     res.sendFile(websiteUrl + "/sets/new/index.html")
 })
 
-app.get("/set/*/test", (req, res) => {
+app.get("/set/*/learn", (req, res) => {
     let selectedSet = sets.getSet("db06ec30-a64d-11ed-82be-9bb81066d880");
-    res.render(websiteUrl + "/test.ejs", { setInfo: selectedSet })
+    res.render(websiteUrl + "/learn.ejs", { setInfo: selectedSet })
 })
 
 app.get("/set/*", (req, res) => {
