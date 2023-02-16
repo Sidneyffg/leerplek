@@ -101,13 +101,15 @@
     </div>
 </body>
 <script>
-    let words = JSON.parse('<%- JSON.stringify(setInfo.words) %>');
+    const words = JSON.parse('<%- JSON.stringify(setInfo.words) %>'),
+    translations = JSON.parse('<%- JSON.stringify(setInfo.translations) %>');
     let selectedWord = 0;
     function nextWord() {
         if (selectedWord == words.length - 1) return
         selectedWord++;
         document.getElementById("set-preview-word").innerHTML = words[selectedWord];
         document.getElementById("selectedWord").innerHTML = selectedWord + 1;
+        showWord = true;
     }
 
     function previousWord() {
@@ -115,13 +117,21 @@
         selectedWord--;
         document.getElementById("set-preview-word").innerHTML = words[selectedWord];
         document.getElementById("selectedWord").innerHTML = selectedWord + 1;
+        showWord = true;
     }
     const setPreview = document.getElementById("setPreview")
+    let showWord = true;
     setPreview.addEventListener("click", e => {
-        if (e.target.tagName !== "BUTTON") {
+        if (e.target.tagName !== "BUTTON" && e.target.tagName !== "IMG") {
+            showWord = !showWord
             setPreview.style.transition = "all ease-in .2s"
             setPreview.style.transform = "rotate3d(0,1,0,90deg)"
             setTimeout(() => {
+                if(showWord){
+                    document.getElementById("set-preview-word").innerHTML = words[selectedWord]
+                }else {
+                    document.getElementById("set-preview-word").innerHTML = translations[selectedWord]
+                }
                 setPreview.style.transition = "all ease-out .2s"
                 setPreview.style.transform = "rotate3d(0,0,0,0deg)"
             }, 200)
