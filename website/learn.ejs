@@ -44,6 +44,7 @@
       </div>
       <div class="bottom">
         <input type="text" name="translation-input" id="translation-input" placeholder="Type the translation here...">
+        <input class="answer correct" type="text" name="correct-translation" id="correct-translation" placeholder="Type the translation here...">
         <div class="buttons">
           <button id="forget-button" class="text">I am stupid</button>
           <button id="translation-button" class="fill">Continue</button>
@@ -51,5 +52,31 @@
       </div>
     </div>
   </main>
+  <script>
+    const forgotBtn = document.querySelector("#forget-button");
+    const continueBtn = document.querySelector("#translation-button");
+    const inp = document.querySelector("#translation-input");
+
+    forgotBtn.onclick = () => {
+      inp.disabled = true;
+      inp.value = "Right translation";
+      inp.className = "correct";
+    }
+
+    continueBtn.onclick = () => {
+      // Check if true
+      const isCorrect = false;
+      if (isCorrect) {
+        inp.className = "correct";
+      } else { 
+        const correctInp = document.querySelector("#correct-translation")
+        correctInp.classList.add("shown");
+        correctInp.value = "Right translation"
+        correctInp.disabled = true;
+        inp.disabled = true;
+        inp.className = "false";
+      }
+    }
+  </script>
 </body>
 </html>
