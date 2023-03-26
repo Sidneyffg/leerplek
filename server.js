@@ -97,6 +97,11 @@ app.get("/set/*", (req, res) => {
     res.render(websiteUrl + "/set.ejs", { setInfo: selectedSet })
 })
 
+app.post("/sendSetData", (req,res) => {
+    console.log(req.body)
+    res.send("ello")
+})
+
 app.get("/classes/*", (req, res) => {
     let classId = req.url.split("/")[2];
     let selectedClass = classes.getClass(classId)
@@ -157,8 +162,12 @@ app.post("/classes/updates/new", (req, res) => {
 /*console.log(sets.addSet({
     name: "very goed set",
     description: "yas",
-    words: [],
-    translations: [],
+    words: [
+        {
+            word: "",
+            translation: ""
+        }
+    ],
     creationDate: Date.now(),
     creatorId: users.getUser({email: "sidney.oostveen@gmail.com"}).id
 }))*/

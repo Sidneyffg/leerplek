@@ -203,7 +203,7 @@ div.flash-card>.bottom {
 div.flash-card.fill>.bottom { height: 60%; }
 div.flash-card.forgot>.bottom { height: 80%; }
 
-div.flash-card>.bottom>input {
+.awnser-style {
   border: 1px solid var(--text-color-trans);
   font-size: 1rem;
   border-radius: .6rem;
@@ -234,6 +234,28 @@ div.flash-card>.bottom>input.answer {
 
 div.flash-card>.bottom>input.answer.shown {
   transform: translateY(0);
+}
+
+#button-container, #awnser-input-container {
+  width: 100%;
+  
+}
+
+#awnser-input-container >*{
+  
+}
+
+.awnser-buttons {
+  display: flex;
+  width: calc(80% + 2rem);
+  gap: 1rem;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.awnser-buttons>button {
+  width: calc(50% - .5rem);
+  box-sizing: border-box;
 }
 
 div.flash-card>.bottom>.buttons {

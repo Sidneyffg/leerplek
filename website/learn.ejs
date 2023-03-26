@@ -2,19 +2,20 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn</title>
-    <link rel="stylesheet" href="/static/std.css">
-    <link rel="stylesheet" href="/static/learn.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script src="/static/learn.js" defer></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn</title>
+  <link rel="stylesheet" href="/static/std.css">
+  <link rel="stylesheet" href="/static/learn.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <script src="/static/learn.js" defer></script>
 </head>
 
 <body>
-    <nav>
+  <nav>
     <input type="checkbox" name="modus-switch" id="modus-switch" hidden>
     <img src="/images/logo.svg" alt="Logo">
     <div class="modus-dropdown">
@@ -32,7 +33,7 @@
         </ul>
       </div>
     </div>
-    <a class="close-btn" href="/set/new">
+    <a class="close-btn" href="/set/<%= setInfo.id %>">
       <img src="/images/close.svg" alt="Close">
     </a>
   </nav>
@@ -42,12 +43,25 @@
         <h1 id="wordToTranslate">Word to translate</h1>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960">
           <path
-            d="M560 925v-62q97-28 158.5-107.5T780 575q0-101-61-181T560 287v-62q124 28 202 125.5T840 575q0 127-78 224.5T560 925ZM120 696V456h160l200-200v640L280 696H120Zm420 48V407q55 17 87.5 64T660 576q0 57-33 104t-87 64ZM420 408 307 516H180v120h127l113 109V408Zm-94 168Z"/>
+            d="M560 925v-62q97-28 158.5-107.5T780 575q0-101-61-181T560 287v-62q124 28 202 125.5T840 575q0 127-78 224.5T560 925ZM120 696V456h160l200-200v640L280 696H120Zm420 48V407q55 17 87.5 64T660 576q0 57-33 104t-87 64ZM420 408 307 516H180v120h127l113 109V408Zm-94 168Z" />
         </svg>
       </div>
       <div class="bottom">
-        <input type="text" name="translation-input" id="translation-input" placeholder="Type the translation here...">
-        <input class="answer correct" disabled type="text" name="correct-translation" id="correct-translation" placeholder="Type the translation here...">
+        <div id="button-container">
+          <div class="awnser-buttons">
+            <button class="awnser-style">awnser 1</button>
+            <button class="awnser-style">awnser 3</button>
+          </div>
+          <div class="awnser-buttons">
+            <button class="awnser-style">awnser 1</button>
+            <button class="awnser-style">awnser 3</button>
+          </div>
+        </div>
+        <div id="awnser-input-container">
+          <input type="text" class="awnser-style" id="translation-input" placeholder="Type the translation here...">
+          <input class="awnser-style answer correct" disabled type="text" name="correct-translation"
+            id="correct-translation" placeholder="Type the translation here...">
+        </div>
         <div class="buttons">
           <button id="forget-button" onclick="learnScript.forgot()" class="text">I am stupid</button>
           <button id="translation-button" onclick="continueBtnClick()" class="fill">Continue</button>
@@ -55,6 +69,13 @@
       </div>
     </div>
   </main>
-    <!--<button onclick="responsiveVoice.speak(`Nó cuối cùng cũng hoạt động!`,'Vietnamese Male')">play</button>
+  <!--<button onclick="responsiveVoice.speak(`Nó cuối cùng cũng hoạt động!`,'Vietnamese Male')">play</button>
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=7p8eOEwd"></script>-->
 </body>
+<script>
+  window.onpageshow = () => {
+    learnScript.init(JSON.parse('<%- JSON.stringify(setInfo.words) %>'))
+    learnScript.nextWord()
+  }
+
+</script>
