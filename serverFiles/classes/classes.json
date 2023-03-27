@@ -56,8 +56,7 @@
           "dueTime": "20:01"
         },
         "creationDate": 1675699083825,
-        "id": "09ec5a10-a637-11ed-95ae-6502e34d58b2",
-        "results": []
+        "id": "09ec5a10-a637-11ed-95ae-6502e34d58b2"
       },
       {
         "name": "slkdfjslkf",
@@ -70,8 +69,7 @@
           "dueTime": "11:11"
         },
         "creationDate": 1675698673359,
-        "id": "154435f0-a636-11ed-95ae-6502e34d58b2",
-        "results": []
+        "id": "154435f0-a636-11ed-95ae-6502e34d58b2"
       },
       {
         "name": "je vader",
@@ -81,8 +79,7 @@
         "materialId": "setId komt hier",
         "homeworkData": null,
         "creationDate": 1675698248481,
-        "id": "18052020-a635-11ed-a08c-e1ae41e4a8f5",
-        "results": []
+        "id": "18052020-a635-11ed-a08c-e1ae41e4a8f5"
       }
     ]
   }

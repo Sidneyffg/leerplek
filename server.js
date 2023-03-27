@@ -89,7 +89,8 @@ app.get("/sets/new", (req, res) => {
 
 app.get("/set/*/learn", (req, res) => {
     let selectedSet = sets.getSet("db06ec30-a64d-11ed-82be-9bb81066d880");
-    res.render(websiteUrl + "/learn.ejs", { setInfo: selectedSet })
+    const userSetData = users.getUser({ email: JSON.parse(req.cookies.loginInfo).email }).data.sets.find(e => e.setId == "db06ec30-a64d-11ed-82be-9bb81066d880")
+    res.render(websiteUrl + "/learn.ejs", { setInfo: selectedSet, userSetData: userSetData })
 })
 
 app.get("/set/*", (req, res) => {
@@ -97,8 +98,14 @@ app.get("/set/*", (req, res) => {
     res.render(websiteUrl + "/set.ejs", { setInfo: selectedSet })
 })
 
-app.post("/sendSetData", (req,res) => {
-    console.log(req.body)
+app.post("/sendSetData", (req, res) => {
+    const loginInfo = JSON.parse(req.cookies.loginInfo);
+    if (!users.verifyUser(loginInfo)) {
+        res.status(400)
+        res.end()
+        return
+    }
+    users.editSetData(req.body, { email: loginInfo.email })
     res.send("ello")
 })
 

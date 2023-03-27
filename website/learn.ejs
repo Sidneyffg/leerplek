@@ -72,5 +72,8 @@
     </main>
     <!--<button onclick="responsiveVoice.speak(`Nó cuối cùng cũng hoạt động!`,'Vietnamese Male')">play</button>
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=7p8eOEwd"></script>-->
-    <div id="data" hidden><%- JSON.stringify(setInfo.words) %></div>
+    <div id="data" hidden><%- JSON.stringify(setInfo) %></div>
+    <script>
+        console.log(JSON.parse(`<%- JSON.stringify(setInfo) %>`))
+    </script>
 </body>

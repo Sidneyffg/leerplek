@@ -1,6 +1,7 @@
 const learnScript = {
-    init(words) {
-        words.forEach((e, idx) => {
+    init(setInfo) {
+        this.setInfo = setInfo;
+        setInfo.words.forEach((e) => {
             this.words.push({
                 word: e.word,
                 translation: e.translation,
@@ -20,7 +21,7 @@ const learnScript = {
 
     words: [],
     nextWord() {
-        //this.words.sort(() => (Math.random() > .5) ? 1 : -1)
+        this.words.sort(() => (Math.random() > .5) ? 1 : -1)
         this.words.forEach(e => {
             if (e.lastTimeAsked == 0) {
                 e.percent = 1.5;
@@ -71,7 +72,7 @@ const learnScript = {
         this.sendDataToServer();
         setTimeout(() => {
             this.nextWord()
-        }, 3000);
+        }, 2300);
     },
     forgot() {
         this.inp.disabled = true;
@@ -122,8 +123,6 @@ const learnScript = {
         const data = [];
         this.words.forEach(e => {
             let dataToPush = { ...e }
-            delete dataToPush.word;
-            delete dataToPush.translation;
             delete dataToPush.percent;
             data.push(dataToPush)
         })
@@ -131,6 +130,7 @@ const learnScript = {
         xhr.open("POST", `${document.location.origin}/sendSetData`);
         xhr.setRequestHeader("Content-Type", "application/json");
         const body = JSON.stringify({
+            setId: this.setInfo.id,
             data: data,
             finished: false
         });

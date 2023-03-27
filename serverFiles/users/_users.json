@@ -13,7 +13,49 @@
       "098729c0-cc01-11ed-a2fb-830fe780f46a"
     ],
     "data": {
-      "sets": [],
+      "sets": [
+        {
+          "setId": "db06ec30-a64d-11ed-82be-9bb81066d880",
+          "data": [
+            {
+              "word": "4",
+              "translation": "4",
+              "timesAsked": 1,
+              "timesWrong": 0,
+              "lastTimeAsked": 1
+            },
+            {
+              "word": "3",
+              "translation": "3",
+              "timesAsked": 0,
+              "timesWrong": 0,
+              "lastTimeAsked": 0
+            },
+            {
+              "word": "2",
+              "translation": "2",
+              "timesAsked": 0,
+              "timesWrong": 0,
+              "lastTimeAsked": 0
+            },
+            {
+              "word": "5",
+              "translation": "5",
+              "timesAsked": 0,
+              "timesWrong": 0,
+              "lastTimeAsked": 0
+            },
+            {
+              "word": "1",
+              "translation": "1",
+              "timesAsked": 0,
+              "timesWrong": 0,
+              "lastTimeAsked": 0
+            }
+          ],
+          "finished": false
+        }
+      ],
       "classes": [
         "0fd22b40-9d80-11ed-9dcb-7f04a35906c9"
       ]

@@ -32,6 +32,17 @@ class UsersClass {
         return this.getUser(userData);
     }
 
+    editSetData(data, userData) {
+        const userSets = this.getUser(userData).data.sets
+        const setData = userSets.find(e => e.setId == data.setId);
+        if (setData == undefined) {
+            userSets.push(data)
+        } else {
+            setData.data = data.data;
+        }
+        this.saveUsers()
+    }
+
     verifyUser(data) {
         let user = this.getUser({ email: data.email });
         if (user.verificationCode != data.code) return false
