@@ -33,40 +33,24 @@
     "id": "0fd22b40-9d80-11ed-9dcb-7f04a35906c9",
     "updates": [
       {
+        "name": "ello",
+        "description": "",
+        "type": "homework",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "materialId": "setId komt hier",
+        "homeworkData": {
+          "dueDate": "2023-03-14",
+          "dueTime": "01:14"
+        },
+        "creationDate": 1679854230605,
+        "id": "7e66bfd0-cc01-11ed-a2fb-830fe780f46a"
+      },
+      {
         "name": "rrftgdfg",
         "description": "dfgdfg",
         "type": "homework",
         "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-        "material": {
-          "id": "setId komt hier",
-          "results": [
-            {
-              "memberId": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "niet waardevol genoeg voor een id",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "wel waardevol genoeg voor een id",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "wel waardevol genoeg voor een id",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "jskldjf",
-              "finished": false,
-              "data": {}
-            }
-          ]
-        },
+        "materialId": "setId komt hier",
         "homeworkData": {
           "dueDate": "2023-02-07",
           "dueTime": "20:01"
@@ -80,36 +64,7 @@
         "description": "skldjf",
         "type": "homework",
         "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-        "material": {
-          "id": "setId komt hier",
-          "results": [
-            {
-              "memberId": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "niet waardevol genoeg voor een id",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "wel waardevol genoeg voor een id",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "wel waardevol genoeg voor een id",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "jskldjf",
-              "finished": false,
-              "data": {}
-            }
-          ]
-        },
+        "materialId": "setId komt hier",
         "homeworkData": {
           "dueDate": "1111-11-11",
           "dueTime": "11:11"
@@ -123,36 +78,7 @@
         "description": "jeje",
         "type": "material",
         "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-        "material": {
-          "id": "setId komt hier",
-          "results": [
-            {
-              "memberId": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "niet waardevol genoeg voor een id",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "wel waardevol genoeg voor een id",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "wel waardevol genoeg voor een id",
-              "finished": false,
-              "data": {}
-            },
-            {
-              "memberId": "jskldjf",
-              "finished": false,
-              "data": {}
-            }
-          ]
-        },
+        "materialId": "setId komt hier",
         "homeworkData": null,
         "creationDate": 1675698248481,
         "id": "18052020-a635-11ed-a08c-e1ae41e4a8f5",

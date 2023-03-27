@@ -47,17 +47,7 @@ class Classes {
             id: uuid.v1()
         }
         if (updateData.type == "material" || updateData.type == "homework") {
-            update.material = {
-                id: updateData.setId,
-                results: []
-            }
-            for (let i = 0; i < selectedClass.members.length; i++) {
-                update.material.results.push({
-                    memberId: selectedClass.members[i].id,
-                    finished: false,
-                    data: {}
-                })
-            }
+            update.materialId = updateData.setId
         }
         if (updateData.type == "homework") {
             update.homeworkData = {

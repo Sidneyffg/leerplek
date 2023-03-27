@@ -1,6 +1,5 @@
 const learnScript = {
     init(words) {
-        console.l
         words.forEach((e, idx) => {
             this.words.push({
                 word: e.word,
@@ -15,6 +14,9 @@ const learnScript = {
     continueBtn: document.querySelector("#translation-button"),
     inp: document.querySelector("#translation-input"),
     title: document.getElementById("wordToTranslate"),
+    awnserButtonContainer: document.getElementById("awnser-button-container"),
+    awnserInputContainer: document.getElementById("awnser-input-container"),
+    awnserButtons: document.getElementsByClassName("awnser-button"),
 
     words: [],
     nextWord() {
@@ -23,7 +25,7 @@ const learnScript = {
             if (e.lastTimeAsked == 0) {
                 e.percent = 1.5;
             } else {
-                e.percent = (1 + Math.pow(e.lastTimeAsked,1.5) / 2 / (this.words.length / 2)) * ((e.timesWrong / e.timesAsked) || 1)
+                e.percent = (1 + Math.pow(e.lastTimeAsked, 1.5) / 2 / (this.words.length / 2)) * ((e.timesWrong / e.timesAsked) || 1)
                 e.lastTimeAsked++;
             }
         })
@@ -36,17 +38,17 @@ const learnScript = {
             }
         })
         this.selectedWordNum = num;
-        this.words[num].lastTimeAsked = 1;
-        this.words[num].timesAsked += 1;
-        if (this.words[num].timesAsked == 0 || this.words[num].timesAsked == this.words[num].timesWrong) {
-            this.showChoice(this.words[num].word)
+        if (this.words[num].timesAsked == this.words[num].timesWrong) {
+            this.showChoice(num)
         } else {
             this.showInput(this.words[num].word)
         }
+        this.words[num].lastTimeAsked = 1;
+        this.words[num].timesAsked += 1;
         console.log(this.words)
     },
 
-    awnser(word) {
+    awnserInput(word) {
         const isCorrect = word == this.words[this.selectedWordNum].word;
         this.inp.disabled = true;
         if (isCorrect) {
@@ -55,10 +57,21 @@ const learnScript = {
             const correctInp = document.querySelector("#correct-translation")
             correctInp.classList.add("shown");
             correctInp.value = this.words[this.selectedWordNum].word;
-            this.inp.classList.add("false")
+            this.inp.classList.add("incorrect")
             this.words[this.selectedWordNum].timesWrong++;
         }
         this.sendDataToServer();
+    },
+    awnserButton(num) {
+        this.awnserButtons[this.correctBtnNum].classList.add("correct")
+        if (num !== this.correctBtnNum) {
+            this.awnserButtons[num].classList.add("incorrect")
+            this.words[this.selectedWordNum].timesWrong++;
+        }
+        this.sendDataToServer();
+        setTimeout(() => {
+            this.nextWord()
+        }, 3000);
     },
     forgot() {
         this.inp.disabled = true;
@@ -74,19 +87,41 @@ const learnScript = {
     },
     showInput(word) {
         this.title.innerHTML = word;
+        this.awnserButtonContainer.style.display = "none";
+        this.awnserInputContainer.style.display = "grid";
+        document.getElementsByClassName("buttons")[0].style.display = "unset"
     },
-    showChoice(word) {
-        this.title.innerHTML = word;
-        /*this.title.innerHTML = word;
-        this.inp.style.display = "none";
-        this.multipleChoice.style.display = "unset";*/
+    showChoice(wordNum) {
+        let wordInfo = this.words[wordNum];
+        this.correctBtnNum = Math.floor(Math.random() * 4)
+        let selectedWordNums = [wordNum];
+        const getNewWordNum = () => {
+            let selectedWordNum = Math.floor(Math.random() * this.words.length)
+            if (selectedWordNums.includes(selectedWordNum)) {
+                return getNewWordNum();
+            }
+            selectedWordNums.push(selectedWordNum)
+            return selectedWordNum
+        }
+        for (let i = 0; i < 4; i++) {
+            this.awnserButtons[i].classList = "awnser-style awnser-button"
+            if (i == this.correctBtnNum) {
+                this.awnserButtons[i].innerHTML = wordInfo.translation
+            } else {
+                this.awnserButtons[i].innerHTML = this.words[getNewWordNum()].translation
+            }
+        }
+        this.title.innerHTML = wordInfo.word;
+        this.awnserButtonContainer.style.display = "unset";
+        this.awnserInputContainer.style.display = "none";
+        document.getElementsByClassName("buttons")[0].style.display = "none"
     },
     awnsered: false,
 
     sendDataToServer() {
         const data = [];
         this.words.forEach(e => {
-            let dataToPush = {...e}
+            let dataToPush = { ...e }
             delete dataToPush.word;
             delete dataToPush.translation;
             delete dataToPush.percent;
@@ -109,8 +144,21 @@ const learnScript = {
         xhr.send(body);
     }
 }
+const dataDiv = document.getElementById("data");
+learnScript.init(JSON.parse(dataDiv.innerHTML))
+dataDiv.remove();
+learnScript.nextWord()
 
-function continueBtnClick() {
+for (let i = 0; i < 4; i++) {
+    learnScript.awnserButtons[i].addEventListener("click", e => {
+        learnScript.awnserButton(i);
+    })
+}
+
+
+
+
+learnScript.continueBtn.addEventListener("click", e => {
     if (learnScript.awnsered) {
         learnScript.awnsered = false;
         learnScript.resetInpField()
@@ -118,5 +166,7 @@ function continueBtnClick() {
         return
     }
     learnScript.awnsered = true;
-    learnScript.awnser(document.getElementById("translation-input").value)
-}
+    learnScript.awnserInput(document.getElementById("translation-input").value)
+})
+
+learnScript.forgotBtn.addEventListener("click", e => learnScript.forgot())
