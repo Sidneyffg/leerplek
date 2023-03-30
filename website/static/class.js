@@ -67,3 +67,34 @@ function openSection(section) {
         }
     };
 }
+
+const inputLink = document.getElementById("inputLink"),
+    inputLinkInp = document.getElementById("inputLinkInp")
+function openInputLink() {
+    inputLinkInp.value = "";
+    inputLink.style.display = "unset"
+    inputLinkInp.focus();
+}
+
+function closeInputLink() {
+    inputLink.style.display = "none"
+}
+
+function addLink(button) {
+    button.disabled = true;
+    const link = inputLinkInp.value;
+    if (link == "") return;
+    //get set data from server
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", `${document.location.origin}/getSetData`);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText);
+        } else {
+            console.log(`Error: ${xhr.status}`);
+        }
+    };
+    let test = JSON.stringify({ setId: link })
+    xhr.send(test);
+}

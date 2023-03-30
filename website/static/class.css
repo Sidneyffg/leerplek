@@ -515,3 +515,44 @@
     height: 30px;
     margin-top: 7px;
 }
+
+.input-link-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(73, 73, 73);
+    padding: 10px 25px;
+    border-radius: 5px;
+    width: 200px;
+    height: 150px;
+}
+
+.input-link-container>input {
+    box-sizing: border-box;
+    margin: 20px 0 30px 0;
+    width: 100%;
+    height: 30px;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+}
+
+.button-holder {
+    display: flex;
+    margin-left: auto;
+    width: min-content;
+    gap: 10px;
+}
+
+.button-holder>button {
+    width: 70px;
+    height: 25px;
+    border: none;
+    background-color: rgb(100, 100, 100);
+    border-radius: 3px;
+}
+
+.button-holder>button:hover:not(:disabled) {
+    background-color: rgb(130, 130, 130);
+}

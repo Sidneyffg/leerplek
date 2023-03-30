@@ -68,6 +68,7 @@ app.post("/signup", (req, res) => {
         password: bcrypt.hashSync(req.body.password, 10),
         verified: false,
         tokens: [],
+        personalSets: [],
         data: {
             sets: [],
             classes: []
@@ -89,7 +90,8 @@ app.get("/sets/new", (req, res) => {
 
 app.get("/set/*/learn", (req, res) => {
     let selectedSet = sets.getSet("db06ec30-a64d-11ed-82be-9bb81066d880");
-    const userSetData = users.getUser({ email: JSON.parse(req.cookies.loginInfo).email }).data.sets.find(e => e.setId == "db06ec30-a64d-11ed-82be-9bb81066d880")
+    //const userSetData = users.getUser({ email: JSON.parse(req.cookies.loginInfo).email }).data.sets.find(e => e.setId == "db06ec30-a64d-11ed-82be-9bb81066d880")
+    const userSetData = users.getUser({ email: "sidney.oostveen@gmail.com" }).data.sets.find(e => e.setId == "db06ec30-a64d-11ed-82be-9bb81066d880")
     res.render(websiteUrl + "/learn.ejs", { setInfo: selectedSet, userSetData: userSetData })
 })
 
@@ -99,14 +101,33 @@ app.get("/set/*", (req, res) => {
 })
 
 app.post("/sendSetData", (req, res) => {
-    const loginInfo = JSON.parse(req.cookies.loginInfo);
-    if (!users.verifyUser(loginInfo)) {
+    /*const loginInfo = JSON.parse(req.cookies.loginInfo);
+    if (!users.checkToken(loginInfo.token, { email: "sidney.oostveen@gmail.com" })) {
+        res.status(400)
+        res.end()
+        return
+    }*/
+    users.editSetData(req.body, { email: "sidney.oostveen@gmail.com" })
+    res.send("ello")
+})
+
+app.post("/getSetData", (req, res) => {
+    const loginInfo = JSON.parse(req.cookies.loginInfo)
+    if (!users.checkToken(loginInfo.token, { email: loginInfo.email })) {
         res.status(400)
         res.end()
         return
     }
-    users.editSetData(req.body, { email: loginInfo.email })
-    res.send("ello")
+    const user = users.getUser({ email: loginInfo.email })
+    const setId = req.body.setId
+    console.log(setId)
+    let set = user.data.sets.find(e => e.setId == setId)
+    if (!set) {
+        res.status(400)
+        res.end()
+        return
+    }
+    res.send(JSON.stringify(set))
 })
 
 app.get("/classes/*", (req, res) => {

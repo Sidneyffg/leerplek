@@ -35,12 +35,16 @@ class UsersClass {
     editSetData(data, userData) {
         const userSets = this.getUser(userData).data.sets
         const setData = userSets.find(e => e.setId == data.setId);
+        console.log(data)
         if (setData == undefined) {
+            console.log("ello")
             userSets.push(data)
         } else {
+            console.log("ella")
             setData.data = data.data;
         }
         this.saveUsers()
+        console.log("save")
     }
 
     verifyUser(data) {
@@ -67,12 +71,8 @@ class UsersClass {
         return true
     }
 
-    saveUsers() {
-        fs.writeFile("./serverFiles/users/_users.json", JSON.stringify(this.users, null, 2), (err) => {
-            if (err) {
-                throw (err);
-            }
-        });
+    async saveUsers() {
+        fs.writeFileSync("./serverFiles/users/_users.json", JSON.stringify(this.users, null, 2));
     }
 }
 

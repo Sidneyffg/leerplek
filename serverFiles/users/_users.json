@@ -12,48 +12,83 @@
       "57e00f90-a3ea-11ed-a945-bbeb3f99c4dd",
       "098729c0-cc01-11ed-a2fb-830fe780f46a"
     ],
+    "personalSets": [
+      
+    ],
     "data": {
       "sets": [
         {
           "setId": "db06ec30-a64d-11ed-82be-9bb81066d880",
           "data": [
             {
-              "word": "4",
-              "translation": "4",
-              "timesAsked": 1,
-              "timesWrong": 0,
-              "lastTimeAsked": 1
+              "wordIdx": 14,
+              "isCorrect": false
             },
             {
-              "word": "3",
-              "translation": "3",
-              "timesAsked": 0,
-              "timesWrong": 0,
-              "lastTimeAsked": 0
+              "wordIdx": 12,
+              "isCorrect": true
             },
             {
-              "word": "2",
-              "translation": "2",
-              "timesAsked": 0,
-              "timesWrong": 0,
-              "lastTimeAsked": 0
+              "wordIdx": 0,
+              "isCorrect": true
             },
             {
-              "word": "5",
-              "translation": "5",
-              "timesAsked": 0,
-              "timesWrong": 0,
-              "lastTimeAsked": 0
+              "wordIdx": 11,
+              "isCorrect": true
             },
             {
-              "word": "1",
-              "translation": "1",
-              "timesAsked": 0,
-              "timesWrong": 0,
-              "lastTimeAsked": 0
+              "wordIdx": 5,
+              "isCorrect": true
+            },
+            {
+              "wordIdx": 14,
+              "isCorrect": true
+            },
+            {
+              "wordIdx": 12,
+              "isCorrect": false
+            },
+            {
+              "wordIdx": 0,
+              "isCorrect": false
+            },
+            {
+              "wordIdx": 11,
+              "isCorrect": false
+            },
+            {
+              "wordIdx": 5,
+              "isCorrect": false
+            },
+            {
+              "wordIdx": 10,
+              "isCorrect": true
+            },
+            {
+              "wordIdx": 9,
+              "isCorrect": true
+            },
+            {
+              "wordIdx": 1,
+              "isCorrect": true
+            },
+            {
+              "wordIdx": 3,
+              "isCorrect": true
+            },
+            {
+              "wordIdx": 2,
+              "isCorrect": true
+            },
+            {
+              "wordIdx": 10,
+              "isCorrect": false
+            },
+            {
+              "wordIdx": 9,
+              "isCorrect": false
             }
-          ],
-          "finished": false
+          ]
         }
       ],
       "classes": [

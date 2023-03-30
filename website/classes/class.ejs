@@ -175,8 +175,8 @@
     <div class="side-section">
         <h2 style="margin-bottom: 0;">Homework</h2>
         <% for(let i=0;i<classInfo.updates.length;i++) {%>
-            <% if(classInfo.updates[i].type=="homework" && classInfo.updates[i].material.results.find(e=> e.memberId ==
-                userData.id).finished == false) {%>
+            <% if(classInfo.updates[i].type=="homework" && !userData.data.sets.find(e=> e.setId ==
+                classInfo.updates[i].materialId)) {%>
                 <a href="./<%=classInfo.id%>/homework" class="side-section-item">
                     <div class="homework-item-left">
                         <h4 class="homework-title">
@@ -259,7 +259,8 @@
                     <img src="/images/upload-icons/upload.svg" onclick="changeSelectedSet(true)" alt="upload"
                         title="Upload personal set.">
                     <img src="/images/upload-icons/cloud-upload.svg" alt="upload" title="Upload cloud set.">
-                    <img src="/images/upload-icons/link.svg" alt="upload" title="Enter link of set.">
+                    <img src="/images/upload-icons/link.svg" alt="upload" onclick="openInputLink()"
+                        title="Enter link of set.">
                     <img src="/images/upload-icons/add-box.svg" alt="upload" title="Create new set.">
                     <div class="post-selected-set" id="postSelectedSet">
                         <h3>H3 paragraaf B</h3>
@@ -269,6 +270,16 @@
                     <button class="update-post-btn" type="submit">Post</button>
                 </div>
             </form>
+        </div>
+        <div class="background-darkener" id="inputLink" style="display: none;">
+            <div class="input-link-container">
+                <h2 style="margin:0;">Add link</h2>
+                <input type="text" placeholder="Link" id="inputLinkInp">
+                <div class="button-holder">
+                    <button onclick="closeInputLink()">Cancel</button>
+                    <button onclick="addLink(this)">Add</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

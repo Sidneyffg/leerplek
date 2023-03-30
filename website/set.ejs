@@ -69,7 +69,7 @@
                 </button>
             </div>
             <h1 id="set-preview-word">
-                <%= setInfo.words[0] %>
+                <%= setInfo.words[0].word %>
             </h1>
         </div>
     </main>
@@ -101,13 +101,12 @@
     </div>
 </body>
 <script>
-    const words = JSON.parse('<%- JSON.stringify(setInfo.words) %>'),
-    translations = JSON.parse('<%- JSON.stringify(setInfo.translations) %>');
+    const words = JSON.parse(`<%- JSON.stringify(setInfo.words) %>`)
     let selectedWord = 0;
     function nextWord() {
         if (selectedWord == words.length - 1) return
         selectedWord++;
-        document.getElementById("set-preview-word").innerHTML = words[selectedWord];
+        document.getElementById("set-preview-word").innerHTML = words[selectedWord].word;
         document.getElementById("selectedWord").innerHTML = selectedWord + 1;
         showWord = true;
     }
@@ -115,7 +114,7 @@
     function previousWord() {
         if (selectedWord == 0) return
         selectedWord--;
-        document.getElementById("set-preview-word").innerHTML = words[selectedWord];
+        document.getElementById("set-preview-word").innerHTML = words[selectedWord].word;
         document.getElementById("selectedWord").innerHTML = selectedWord + 1;
         showWord = true;
     }
@@ -127,10 +126,10 @@
             setPreview.style.transition = "all ease-in .2s"
             setPreview.style.transform = "rotate3d(0,1,0,90deg)"
             setTimeout(() => {
-                if(showWord){
-                    document.getElementById("set-preview-word").innerHTML = words[selectedWord]
-                }else {
-                    document.getElementById("set-preview-word").innerHTML = translations[selectedWord]
+                if (showWord) {
+                    document.getElementById("set-preview-word").innerHTML = words[selectedWord].word
+                } else {
+                    document.getElementById("set-preview-word").innerHTML = words[selectedWord].translation
                 }
                 setPreview.style.transition = "all ease-out .2s"
                 setPreview.style.transform = "rotate3d(0,0,0,0deg)"

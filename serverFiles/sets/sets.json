@@ -4,24 +4,68 @@
     "description": "yas",
     "words": [
       {
-        "word": "1",
-        "translation": "1"
+        "word": "koppig",
+        "translation": "têtu"
       },
       {
-        "word": "2",
-        "translation": "2"
+        "word": "alleen",
+        "translation": "seul"
       },
       {
-        "word": "3",
-        "translation": "3"
+        "word": "gescheiden",
+        "translation": "divercé"
       },
       {
-        "word": "4",
-        "translation": "4"
+        "word": "lang",
+        "translation": "longtemps"
       },
       {
-        "word": "5",
-        "translation": "5"
+        "word": "ik leef",
+        "translation": "je vis"
+      },
+      {
+        "word": "de badkamer",
+        "translation": "la salle de bains"
+      },
+      {
+        "word": "de slaapkamer",
+        "translation": "la chambre"
+      },
+      {
+        "word": "het huis",
+        "translation": "la maison"
+      },
+      {
+        "word": "het geheim",
+        "translation": "le secret"
+      },
+      {
+        "word": "de aandacht",
+        "translation": "l'attention"
+      },
+      {
+        "word": "het lawaai",
+        "translation": "le bruit"
+      },
+      {
+        "word": "het hart",
+        "translation": "le coeur"
+      },
+      {
+        "word": "delen",
+        "translation": "partager"
+      },
+      {
+        "word": "beschermen",
+        "translation": "protéger"
+      },
+      {
+        "word": "deel uitmaken van",
+        "translation": "faire partie de"
+      },
+      {
+        "word": "we maken ruzie",
+        "translation": "on se dispute"
       }
     ],
     "creationDate": 1675708883571,

@@ -14,7 +14,7 @@ class sets {
     addSet(data) {
         const id = uuid.v1();
         data.id = id;
-        this.sets.push(data)
+        this.sets.push(data);
         this.saveSets();
         return id;
     }
