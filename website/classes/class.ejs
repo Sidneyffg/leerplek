@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/static/std.css">
     <link rel="stylesheet" href="/static/class.css">
     <script src="/static/class.js" defer></script>
+    <script src="/static/std.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
 </head>
 
@@ -68,7 +69,8 @@
                     <div class="updates-line"></div>
                 </div>
                 <% for(let i=0;i < classInfo.updates.length;i++){ %>
-                    <div class="update-container">
+                    <a class="update-container"
+                        href="classes/<%= classInfo.id %>/update/<%= classInfo.updates[i].id %>">
                         <div class="update-icon-container">
 
                             <% if(classInfo.updates[i].type=='homework' ) {%>
@@ -89,7 +91,7 @@
                         </div>
                         <div></div>
                         <img src="/images/more.svg" alt="open">
-                    </div>
+                    </a>
                     <% } %>
             </div>
         </div>
@@ -263,7 +265,7 @@
                         title="Enter link of set.">
                     <img src="/images/upload-icons/add-box.svg" alt="upload" title="Create new set.">
                     <div class="post-selected-set" id="postSelectedSet">
-                        <h3>H3 paragraaf B</h3>
+                        <h3 id="postSelectedSetName">H3 paragraaf B</h3>
                         <img src="/images/close.svg" alt="remove" onclick="changeSelectedSet(false)">
                     </div>
                     <input type="text" name="classId" style="display: none;" value="<%= classInfo.id %>">
@@ -281,6 +283,10 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="succesCallbackMsg" class="alert" style="display: none;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Succes!</strong> Indicates a dangerous or potentially negative action.
     </div>
 </body>
 

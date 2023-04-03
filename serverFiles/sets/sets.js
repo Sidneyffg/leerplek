@@ -1,5 +1,6 @@
 const fs = require("fs")
 const uuid = require("uuid")
+const users = require("../users/users.js")
 
 
 class sets {
@@ -16,6 +17,8 @@ class sets {
         data.id = id;
         this.sets.push(data);
         this.saveSets();
+        const user = users.getUser({ id: data.creatorId })
+        user.data.personalSets.push(id);
         return id;
     }
 

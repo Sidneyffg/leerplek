@@ -23,11 +23,24 @@ class UsersClass {
      */
     newUser(userData) {
         if (this.getUser(userData)) return false;
-        let code = uuid.v1();
-        userData.verificationCode = code;
-        userData.id = uuid.v4();
-        this.users.push(userData);
+        const code = uuid.v1();
+        const newUser = {
+            name: userData.name,
+            email: userData.email.toLowerCase(),
+            password: bcrypt.hashSync(userData.password, 10),
+            verified: false,
+            tokens: [],
+            data: {
+                personalSets: [],
+                sets: [],
+                classes: []
+            },
+            verificationCode: code,
+            id: uuid.v4()
+        }
+        this.users.push(newUser);
         mailer.sendMail(0, "", { code: code, email: userData.email })
+        mailer.sendMail()
         this.saveUsers();
         return this.getUser(userData);
     }

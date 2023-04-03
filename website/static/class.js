@@ -14,8 +14,9 @@ function createUpdateTypeChange(e) {
     }
 }
 
-function changeSelectedSet(selectedSet) {
+function changeSelectedSet(selectedSet, setName) {
     setSelected = selectedSet;
+    document.getElementById("postSelectedSetName").innerHTML = setName;
     hideUploadSet()
     showUploadSet()
 }
@@ -90,9 +91,14 @@ function addLink(button) {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onload = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.responseText);
+            const set = JSON.parse(xhr.responseText)
+            changeSelectedSet(true, set.name)
+            closeInputLink()
+            button.disabled = false;
         } else {
-            console.log(`Error: ${xhr.status}`);
+            message("Error", "Could not find set...")
+            button.disabled = false;
+            inputLinkInp.focus()
         }
     };
     let test = JSON.stringify({ setId: link })

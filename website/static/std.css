@@ -187,7 +187,8 @@ nav {
     border-bottom: solid 1px;
 }
 
-input[type="date"], input[type="time"] {
+input[type="date"],
+input[type="time"] {
     background-color: #0080ff;
     padding: 15px;
     font-family: "Roboto Mono", monospace;
@@ -208,4 +209,56 @@ input[type="date"], input[type="time"] {
 .flipped-img {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+}
+
+/* Popups */
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    -webkit-user-select: none;
+    /* Safari 3.1+ */
+    -moz-user-select: none;
+    /* Firefox 2+ */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+    /* Standard syntax */
+}
+
+.alert.success {
+    background-color: #04AA6D;
+}
+
+.alert.info {
+    background-color: #2196F3;
+}
+
+.alert.warning {
+    background-color: #ff9800;
+}
+
+.alert.error {
+    background-color: #f44336;
+}
+
+.closebtn {
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0 .8rem;
+}
+
+.closebtn:hover {
+    color: black;
 }

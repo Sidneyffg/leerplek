@@ -118,16 +118,19 @@ app.post("/getSetData", (req, res) => {
         res.end()
         return
     }
-    const user = users.getUser({ email: loginInfo.email })
     const setId = req.body.setId
-    console.log(setId)
-    let set = user.data.sets.find(e => e.setId == setId)
+    const set = sets.getSet(setId)
+
     if (!set) {
         res.status(400)
         res.end()
         return
     }
     res.send(JSON.stringify(set))
+})
+
+app.get("/classes/*/update/*", (req, res) => {
+
 })
 
 app.get("/classes/*", (req, res) => {
@@ -143,7 +146,7 @@ app.get("/classes/*", (req, res) => {
         return
     }
     let user = users.getUser({ email: loginInfo.email })
-    if (!user.data.classes.includes(classId)) {
+    if (!selectedClass.members.find(e => e.id == user.id)) {
         res.redirect("/dashboard");
         return
     }
