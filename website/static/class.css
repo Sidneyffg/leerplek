@@ -63,20 +63,6 @@
     cursor: pointer;
 }
 
-.update-icon-container {
-    width: 45px;
-    height: 45px;
-    background-color: rgb(46, 124, 212);
-    border-radius: 50%;
-    margin: 2.5px;
-    padding: 5px;
-    box-sizing: border-box;
-}
-
-.update-icon-container>img {
-    height: 35px;
-}
-
 .update-name-container {
     padding-top: 3px;
     max-width: 100%;

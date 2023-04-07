@@ -14,9 +14,10 @@ function createUpdateTypeChange(e) {
     }
 }
 
-function changeSelectedSet(selectedSet, setName) {
+function changeSelectedSet(selectedSet, setInfo) {
     setSelected = selectedSet;
-    document.getElementById("postSelectedSetName").innerHTML = setName;
+    document.getElementById("postSelectedSetName").innerHTML = setInfo.name;
+    document.getElementById("postSelectedSetInput").value = setInfo.id;
     hideUploadSet()
     showUploadSet()
 }
@@ -92,7 +93,7 @@ function addLink(button) {
     xhr.onload = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
             const set = JSON.parse(xhr.responseText)
-            changeSelectedSet(true, set.name)
+            changeSelectedSet(true, set)
             closeInputLink()
             button.disabled = false;
         } else {

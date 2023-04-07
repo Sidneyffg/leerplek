@@ -130,7 +130,35 @@ app.post("/getSetData", (req, res) => {
 })
 
 app.get("/classes/*/update/*", (req, res) => {
+    let classId = req.url.split("/")[2];
+    let selectedClass = classes.getClass(classId)
+    if (!selectedClass) {
+        res.redirect("/dashboard")
+        return
+    }
+    let loginInfo = JSON.parse(req.cookies.loginInfo ?? null)
+    if (!loginInfo || !users.checkToken(loginInfo.token, { email: loginInfo.email })) {
+        console.log("ello")
+        res.redirect("/dashboard")
+        return
+    }
+    let user = users.getUser({ email: loginInfo.email })
+    if (!selectedClass.members.find(e => e.id == user.id)) {
+        console.log("ella")
+        res.redirect("/dashboard");
+        return
+    }
+    const updateId = req.url.split("/")[4];
+    const updateCreator = users.getUser({ id: selectedClass.updates.find(e => e.id == updateId).addedBy })
 
+    res.render(websiteUrl + "/update.ejs",
+        {
+            classInfo: selectedClass,
+            userData: user,
+            updateId: updateId,
+            updateCreator: updateCreator,
+            updateCreationDate: timeConverter(selectedClass.updates.find(e => e.id == updateId).creationDate)
+        })
 })
 
 app.get("/classes/*", (req, res) => {
@@ -170,6 +198,7 @@ app.post("/classes/new", (req, res) => {
 })
 
 app.post("/classes/updates/new", (req, res) => {
+    console.log(req.body)
     const classId = req.body.classId;
     let selectedClass = classes.getClass(classId)
     if (!selectedClass) {
@@ -186,7 +215,16 @@ app.post("/classes/updates/new", (req, res) => {
         res.redirect("/classes/" + classId);
         return
     }
-    classes.addUpdateToClass({ classId: classId, addedBy: user.id, dueDate: req.body.date, dueTime: req.body.time, type: req.body.type, setId: "setId komt hier", name: req.body.name, description: req.body.description })
+    classes.addUpdateToClass({
+        classId: classId,
+        addedBy: user.id,
+        dueDate: req.body.date,
+        dueTime: req.body.time,
+        type: req.body.type,
+        setId: req.body.setId,
+        name: req.body.name,
+        description: req.body.description
+    })
     res.redirect("/classes/" + classId);
 })
 
@@ -211,6 +249,9 @@ function timeConverter(UNIX_timestamp) {
     const b = new Date(Date.now());
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     if (a.getDate() == b.getDate() && a > Date.now() - 864e5) {
+        if (a.getMinutes() < 10) {
+            return `${a.getHours()}:0${a.getMinutes()}`
+        }
         return `${a.getHours()}:${a.getMinutes()}`
     }
     if (a.getDate() == b.getDate() - 1 && a > Date.now() - 864e5 * 2) {

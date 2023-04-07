@@ -41,7 +41,6 @@ class Classes {
             description: updateData.description,
             type: updateData.type,
             addedBy: updateData.addedBy,
-            material: null,
             homeworkData: null,
             creationDate: Date.now(),
             id: uuid.v1()

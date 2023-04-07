@@ -33,6 +33,58 @@
     "id": "0fd22b40-9d80-11ed-9dcb-7f04a35906c9",
     "updates": [
       {
+        "name": "test3",
+        "description": "Deze set heeft 25 woorden en moet voor vrijdag 15 feb afgemaakt worden, dan hebben we een toets.",
+        "type": "homework",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "homeworkData": {
+          "dueDate": "2023-04-29",
+          "dueTime": "17:06"
+        },
+        "creationDate": 1680861835707,
+        "id": "81d7d8b0-d52b-11ed-9bc7-39bb7d6d2dfd",
+        "materialId": "setId komt hier"
+      },
+      {
+        "name": "test2",
+        "description": "dsdfsdf",
+        "type": "homework",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "homeworkData": {
+          "dueDate": "2023-04-19",
+          "dueTime": "17:06"
+        },
+        "creationDate": 1680861768318,
+        "id": "59ad19e0-d52b-11ed-9bc7-39bb7d6d2dfd",
+        "materialId": "setId komt hier"
+      },
+      {
+        "name": "testtt",
+        "description": "ddd",
+        "type": "homework",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "homeworkData": {
+          "dueDate": "2023-04-18",
+          "dueTime": "15:58"
+        },
+        "creationDate": 1680861204411,
+        "id": "098fdfc0-d52a-11ed-9bc7-39bb7d6d2dfd",
+        "materialId": "setId komt hier"
+      },
+      {
+        "name": "lijst B en C voor vrijdag",
+        "description": "",
+        "type": "homework",
+        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
+        "homeworkData": {
+          "dueDate": "2023-04-12",
+          "dueTime": "15:20"
+        },
+        "creationDate": 1680858938649,
+        "id": "c31007a0-d524-11ed-885a-f79a0c50837a",
+        "materialId": "setId komt hier"
+      },
+      {
         "name": "ello",
         "description": "",
         "type": "homework",
