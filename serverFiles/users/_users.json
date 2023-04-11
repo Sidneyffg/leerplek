@@ -10,7 +10,8 @@
       "1ceddf50-a081-11ed-914d-c70bfe63b5d8",
       "02148270-a2f1-11ed-aefc-c3710048814e",
       "57e00f90-a3ea-11ed-a945-bbeb3f99c4dd",
-      "098729c0-cc01-11ed-a2fb-830fe780f46a"
+      "098729c0-cc01-11ed-a2fb-830fe780f46a",
+      "2fba3050-d54e-11ed-9665-0783359c0dd2"
     ],
     "data": {
       "personalSets": [
@@ -21,47 +22,7 @@
           "setId": "db06ec30-a64d-11ed-82be-9bb81066d880",
           "data": [
             {
-              "wordIdx": 14,
-              "isCorrect": false
-            },
-            {
-              "wordIdx": 12,
-              "isCorrect": true
-            },
-            {
-              "wordIdx": 0,
-              "isCorrect": true
-            },
-            {
-              "wordIdx": 11,
-              "isCorrect": true
-            },
-            {
               "wordIdx": 5,
-              "isCorrect": true
-            },
-            {
-              "wordIdx": 14,
-              "isCorrect": true
-            },
-            {
-              "wordIdx": 12,
-              "isCorrect": false
-            },
-            {
-              "wordIdx": 0,
-              "isCorrect": false
-            },
-            {
-              "wordIdx": 11,
-              "isCorrect": false
-            },
-            {
-              "wordIdx": 5,
-              "isCorrect": false
-            },
-            {
-              "wordIdx": 10,
               "isCorrect": true
             },
             {
@@ -69,24 +30,24 @@
               "isCorrect": true
             },
             {
-              "wordIdx": 1,
+              "wordIdx": 7,
               "isCorrect": true
             },
             {
-              "wordIdx": 3,
+              "wordIdx": 4,
               "isCorrect": true
             },
             {
-              "wordIdx": 2,
+              "wordIdx": 15,
               "isCorrect": true
             },
             {
-              "wordIdx": 10,
-              "isCorrect": false
+              "wordIdx": 5,
+              "isCorrect": true
             },
             {
               "wordIdx": 9,
-              "isCorrect": false
+              "isCorrect": true
             }
           ]
         }

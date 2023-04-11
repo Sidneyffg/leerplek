@@ -33,47 +33,34 @@
     "id": "0fd22b40-9d80-11ed-9dcb-7f04a35906c9",
     "updates": [
       {
-        "name": "test3",
-        "description": "Deze set heeft 25 woorden en moet voor vrijdag 15 feb afgemaakt worden, dan hebben we een toets.",
+        "name": "update 1",
+        "description": "very goed description",
         "type": "homework",
         "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
         "homeworkData": {
-          "dueDate": "2023-04-29",
-          "dueTime": "17:06"
+          "dueDate": "2023-04-11",
+          "dueTime": "20:52"
         },
-        "creationDate": 1680861835707,
-        "id": "81d7d8b0-d52b-11ed-9bc7-39bb7d6d2dfd",
-        "materialId": "setId komt hier"
+        "creationDate": 1680879009108,
+        "id": "7dfce140-d553-11ed-b955-937da86ae524",
+        "materialId": "db06ec30-a64d-11ed-82be-9bb81066d880"
       },
       {
-        "name": "test2",
-        "description": "dsdfsdf",
+        "name": "hallo",
+        "description": "jauisbgjibdhgbgsw hnuuisghhji ubhdekj dbjdfbvhd",
         "type": "homework",
         "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
         "homeworkData": {
-          "dueDate": "2023-04-19",
-          "dueTime": "17:06"
+          "dueDate": "2023-04-26",
+          "dueTime": "19:50"
         },
-        "creationDate": 1680861768318,
-        "id": "59ad19e0-d52b-11ed-9bc7-39bb7d6d2dfd",
-        "materialId": "setId komt hier"
-      },
-      {
-        "name": "testtt",
-        "description": "ddd",
-        "type": "homework",
-        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-        "homeworkData": {
-          "dueDate": "2023-04-18",
-          "dueTime": "15:58"
-        },
-        "creationDate": 1680861204411,
-        "id": "098fdfc0-d52a-11ed-9bc7-39bb7d6d2dfd",
-        "materialId": "setId komt hier"
+        "creationDate": 1680878741853,
+        "id": "deb127e0-d552-11ed-b955-937da86ae524",
+        "materialId": "db06ec30-a64d-11ed-82be-9bb81066d880"
       },
       {
         "name": "lijst B en C voor vrijdag",
-        "description": "",
+        "description": "beschrijving",
         "type": "homework",
         "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
         "homeworkData": {
@@ -122,16 +109,6 @@
         },
         "creationDate": 1675698673359,
         "id": "154435f0-a636-11ed-95ae-6502e34d58b2"
-      },
-      {
-        "name": "je vader",
-        "description": "jeje",
-        "type": "material",
-        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-        "materialId": "setId komt hier",
-        "homeworkData": null,
-        "creationDate": 1675698248481,
-        "id": "18052020-a635-11ed-a08c-e1ae41e4a8f5"
       }
     ]
   }
