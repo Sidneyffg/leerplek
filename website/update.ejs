@@ -39,9 +39,9 @@
             <img class="nav-item" src="/images/account.svg" alt="" />
         </nav>
         <main>
-                <div class="update-name">
-                    <div class="update-name-top">
-                        <div class="update-icon-container">
+            <div class="update-name">
+                <div class="update-name-top">
+                    <div class="update-icon-container">
 
                         <% if(thisUpdate.type=='homework' ) {%>
                             <img src="/images/update-icons/assignment.svg">
@@ -59,7 +59,7 @@
                     <p>
                         <%= updateCreator.name%>
                             •
-                            <%= updateCreationDate %>
+                            <%= timeConverter(classInfo.updates.find(e => e.id == updateId).creationDate) %>
                     </p>
                 </div>
             </div>
@@ -72,21 +72,22 @@
                 </div>
                 <%}%>
 
-                <a href="/set/<%= thisUpdate.materialid %>" class="side-section-item">
-                    <div class="homework-item-left">
-                        <h4 class="homework-title">
-                            <%= thisUpdate.name %>
-                        </h4>
-                        <div class="homework-data-section" style="margin-left: auto;">
-                            <p>5d&nbsp;</p>
-                            <img src="/images/clock.svg" onerror="this.style.display='none'" style="margin-top: -1px;">
-                            <p>&nbsp;-&nbsp;</p>
-                            <p>??w&nbsp;</p>
-                            <img src="/images/checklist.svg" onerror="this.style.display = 'none'">
+                    <a href="/set/<%= setData.id %>" class="side-section-item">
+                        <div class="homework-item-left">
+                            <h4 class="homework-title">
+                                <%= setData.name %>
+                            </h4>
+                            <div class="homework-data-section" style="margin-left: auto;">
+                                <p><%= UNIXToDueTime(thisUpdate.homeworkData.dueTime) %>&nbsp;</p>
+                                <img src="/images/clock.svg" onerror="this.style.display='none'"
+                                    style="margin-top: -1px;">
+                                <p>&nbsp;-&nbsp;</p>
+                                <p><%= setData.words.length %>w&nbsp;</p>
+                                <img src="/images/checklist.svg" onerror="this.style.display = 'none'">
+                            </div>
                         </div>
-                    </div>
-                    <img src="/images/more.svg" alt="more" class="homework-item-right">
-                </a>
+                        <img src="/images/more.svg" alt="more" class="homework-item-right">
+                    </a>
         </main>
         <div class="background-darkener" id="background-darkener" style="display: none;">
             <div class="class-create-section">

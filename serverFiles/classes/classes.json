@@ -33,82 +33,28 @@
     "id": "0fd22b40-9d80-11ed-9dcb-7f04a35906c9",
     "updates": [
       {
-        "name": "update 1",
-        "description": "very goed description",
+        "name": "Huiswerk voor vrijdag",
+        "description": "Dit huiswerk moet vrijdag af zijn or else...",
         "type": "homework",
         "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
         "homeworkData": {
-          "dueDate": "2023-04-11",
-          "dueTime": "20:52"
+          "dueTime": 1682040780000
         },
-        "creationDate": 1680879009108,
-        "id": "7dfce140-d553-11ed-b955-937da86ae524",
+        "creationDate": 1681759781748,
+        "id": "33644a50-dd56-11ed-9705-234d14783857",
         "materialId": "db06ec30-a64d-11ed-82be-9bb81066d880"
       },
       {
-        "name": "hallo",
-        "description": "jauisbgjibdhgbgsw hnuuisghhji ubhdekj dbjdfbvhd",
+        "name": "wesdf",
+        "description": "sdsfdsf",
         "type": "homework",
         "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
         "homeworkData": {
-          "dueDate": "2023-04-26",
-          "dueTime": "19:50"
+          "dueTime": 1683244020000
         },
-        "creationDate": 1680878741853,
-        "id": "deb127e0-d552-11ed-b955-937da86ae524",
+        "creationDate": 1681494337495,
+        "id": "2a497e70-daec-11ed-ac93-57bb8365278e",
         "materialId": "db06ec30-a64d-11ed-82be-9bb81066d880"
-      },
-      {
-        "name": "lijst B en C voor vrijdag",
-        "description": "beschrijving",
-        "type": "homework",
-        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-        "homeworkData": {
-          "dueDate": "2023-04-12",
-          "dueTime": "15:20"
-        },
-        "creationDate": 1680858938649,
-        "id": "c31007a0-d524-11ed-885a-f79a0c50837a",
-        "materialId": "setId komt hier"
-      },
-      {
-        "name": "ello",
-        "description": "",
-        "type": "homework",
-        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-        "materialId": "setId komt hier",
-        "homeworkData": {
-          "dueDate": "2023-03-14",
-          "dueTime": "01:14"
-        },
-        "creationDate": 1679854230605,
-        "id": "7e66bfd0-cc01-11ed-a2fb-830fe780f46a"
-      },
-      {
-        "name": "rrftgdfg",
-        "description": "dfgdfg",
-        "type": "homework",
-        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-        "materialId": "setId komt hier",
-        "homeworkData": {
-          "dueDate": "2023-02-07",
-          "dueTime": "20:01"
-        },
-        "creationDate": 1675699083825,
-        "id": "09ec5a10-a637-11ed-95ae-6502e34d58b2"
-      },
-      {
-        "name": "slkdfjslkf",
-        "description": "skldjf",
-        "type": "homework",
-        "addedBy": "dc2aa018-196b-40e8-afe7-710699dc00d1",
-        "materialId": "setId komt hier",
-        "homeworkData": {
-          "dueDate": "1111-11-11",
-          "dueTime": "11:11"
-        },
-        "creationDate": 1675698673359,
-        "id": "154435f0-a636-11ed-95ae-6502e34d58b2"
       }
     ]
   }

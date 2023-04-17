@@ -19,6 +19,7 @@ app.get("/dashboard", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
+    console.log(req.cookies)
     res.sendFile(websiteUrl + "/login/index.html")
 })
 
@@ -150,14 +151,17 @@ app.get("/classes/*/update/*", (req, res) => {
     }
     const updateId = req.url.split("/")[4];
     const updateCreator = users.getUser({ id: selectedClass.updates.find(e => e.id == updateId).addedBy })
-
+    const setData = sets.getSet(selectedClass.updates.find(e => e.id == updateId).materialId)
+    console.log(selectedClass.updates.find(e => e.id == updateId))
     res.render(websiteUrl + "/update.ejs",
         {
             classInfo: selectedClass,
             userData: user,
             updateId: updateId,
             updateCreator: updateCreator,
-            updateCreationDate: timeConverter(selectedClass.updates.find(e => e.id == updateId).creationDate)
+            timeConverter: timeConverter,
+            UNIXToDueTime: UNIXToDueTime,
+            setData: setData
         })
 })
 
@@ -178,9 +182,14 @@ app.get("/classes/*", (req, res) => {
         res.redirect("/dashboard");
         return
     }
-    res.render(websiteUrl + "/classes/class.ejs", { classInfo: selectedClass, userData: user, languages: classes.languages, roles: classes.roles, timeConverter: timeConverter })
+    let classSets = [];
+    selectedClass.updates.forEach(e => {
+        if(!e.materialId) return;
+        classSets.push(sets.getSet(e.materialId))
+    });
+    console.log(classSets)
+    res.render(websiteUrl + "/classes/class.ejs", { classInfo: selectedClass, userData: user,classSets: classSets, languages: classes.languages, roles: classes.roles, timeConverter: timeConverter })
 })
-
 app.post("/classes/new", (req, res) => {
     let loginInfo = JSON.parse(req.cookies.loginInfo ?? null)
     if (!loginInfo || !users.checkToken(loginInfo.token, { email: loginInfo.email })) {
@@ -215,11 +224,15 @@ app.post("/classes/updates/new", (req, res) => {
         res.redirect("/classes/" + classId);
         return
     }
+    console.log(req.body)
+    const time = req.body.time.split(":");
+    let dueTime = new Date(req.body.date).getTime() + time[0] * 3.6e6 + time[1] * 6e4
+
+
     classes.addUpdateToClass({
         classId: classId,
         addedBy: user.id,
-        dueDate: req.body.date,
-        dueTime: req.body.time,
+        dueTime: dueTime,
         type: req.body.type,
         setId: req.body.setId,
         name: req.body.name,
@@ -242,7 +255,28 @@ app.post("/classes/updates/new", (req, res) => {
 }))*/
 
 
-
+function UNIXToDueTime(UNIX_timestamp) {
+    const a = new Date(UNIX_timestamp);
+    const b = new Date(Date.now());
+    if(b>a) return "Too late"
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    if (a.getDate() == b.getDate() && a > Date.now() - 864e5) {
+        if (a.getMinutes() < 10) {
+            return `${a.getHours()}:0${a.getMinutes()}`
+        }
+        return `${a.getHours()}:${a.getMinutes()}`
+    }
+    if (a.getDate() == b.getDate() + 1 && b > a - 864e5 * 2) {
+        if (a.getMinutes() < 10) {
+            return `Tomorrow ${a.getHours()}:0${a.getMinutes()}`
+        }
+        return `Tomorrow ${a.getHours()}:${a.getMinutes()}`
+    }
+    if (a.getFullYear() !== b.getFullYear()) {
+        return `${a.getDate()} ${months[a.getMonth()]} ${a.getFullYear()}`
+    }
+    return `${a.getDate()} ${months[a.getMonth()]}`
+}
 
 function timeConverter(UNIX_timestamp) {
     const a = new Date(UNIX_timestamp);
@@ -262,6 +296,8 @@ function timeConverter(UNIX_timestamp) {
     }
     return `${a.getDate()} ${months[a.getMonth()]}`
 }
+console.log(timeConverter(Date.now()))
+
 
 app.listen(3000, () => {
     console.log("Server running:)")
