@@ -1,10 +1,32 @@
+:root {
+    --main-color: black;
+    --nav-color: rgb(20, 20, 20);
+    --main-color-trans: rgb(20, 20, 20);
+    --text-color: white;
+    --text-color-trans: rgb(180, 180, 180);
+    --accent: #5b63b7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
 * {
     font-family: "roboto";
 }
 
 html,
 body {
-    background-color: rgb(27, 27, 34);
+    background: #341741;
+    background: -webkit-radial-gradient(bottom right, #341741, #1C4B3F);
+    background: -moz-radial-gradient(bottom right, #341741, #1C4B3F);
+    background: radial-gradient(to top left, #341741, #1C4B3F);
     margin: 0;
     padding: 0;
     color: white;
@@ -12,6 +34,7 @@ body {
 }
 
 body {
+    position: relative;
     display: grid;
     grid-template-areas:
         "nav nav"
@@ -26,32 +49,245 @@ a {
 }
 
 nav {
-    grid-area: nav;
-    background-color: rgb(73, 73, 73);
+    position: absolute;
+    width: 100vw;
+    height: 5rem;
+    box-sizing: border-box;
+    padding: .75rem;
+    background: var(--nav-color);
     display: flex;
-    padding: 7px 15px;
+    align-items: center;
+}
+
+nav>a {
+    cursor: pointer;
+    padding: .5rem .75rem;
+    margin-inline: 1rem;
+    color: var(--text-color-trans) !important;
+    transition: color .3s ease;
+    font-size: 1.2rem;
+}
+
+nav>a:hover {
+    color: var(--text-color) !important;
+}
+
+nav .right {
+    float: right;
+    margin-left: auto;
+}
+
+nav .modus-dropdown {
+    position: relative;
+    display: block;
+    border-radius: .6rem;
+    height: 100%;
+    width: 10rem;
+}
+
+nav .modus-dropdown span {
+    font-size: 1.2rem;
+    color: var(--text-color-trans);
+    transition: color .3s ease;
+}
+
+nav .modus-dropdown>label:hover span {
+    color: var(--text-color);
+}
+
+nav .modus-dropdown label[for="modus-switch"] {
+    display: flex;
+    align-items: center;
+}
+
+nav .modus-dropdown>label {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: .6rem;
+    padding: .85rem;
     box-sizing: border-box;
 }
 
-.nav-item {
-    cursor: pointer;
-    margin-inline: 10px !important;
+nav .modus-dropdown>div.content-wrapper {
+    display: block;
+    position: absolute;
+    width: 12rem;
+    border-radius: .6rem;
+    margin-top: 1rem;
+    overflow: hidden;
 }
 
-.nav-text {
-    text-decoration: none;
-    color: white;
-    margin-bottom: -7px;
+nav .modus-dropdown>div.content-wrapper>ul {
+    list-style-type: none;
+    display: block;
+    border-radius: .6rem;
+    background: var(--nav-color);
+    padding: 0;
+    margin: 0;
+    transform: translateY(-120%);
+    transition: transform .3s ease;
+}
+
+nav .modus-dropdown>div.content-wrapper>ul li {
+    margin: .25rem 0;
+    cursor: pointer;
+    position: relative;
+}
+
+nav .modus-dropdown>div.content-wrapper a {
+    padding: .75rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%
+}
+
+nav .modus-dropdown>div.content-wrapper a::before {
+    content: "\f04c";
+    font-family: "Material Symbols Outlined";
+    font-size: 1.5rem;
+    padding-right: .5rem;
+}
+
+nav .modus-dropdown>div.content-wrapper>ul li::after {
+    content: "\e5cc";
+    font-family: "Material Symbols Outlined";
+    font-size: 1.5rem;
+    transition: transform .3s ease, opacity .3s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 2rem;
+}
+
+nav .modus-dropdown>div.content-wrapper>ul li:hover::after {
+    opacity: 1;
+    transform: translate(1rem, -50%);
+}
+
+main {
+    box-sizing: border-box;
+    padding: 2rem;
+    width: 100vw;
+    min-height: calc(100vh - 5rem);
+    margin-top: 5rem;
+    display: grid;
+}
+
+section {
+    background: rgba(20, 20, 20, 0.8);
+    border-radius: .6rem;
+    padding: 1rem;
+}
+
+#modus-switch:checked~.modus-dropdown>div.content-wrapper>ul {
+    transform: translateY(0);
+}
+
+#modus-switch:checked~.modus-dropdown::after {
+    transform: rotate(180deg);
+}
+
+nav .modus-dropdown::after {
+    content: "\e5cf";
+    font-family: "Material Symbols Outlined";
+    font-size: 1.5rem;
+    position: absolute;
+    top: calc(50% - .85rem);
+    right: 1rem;
+    pointer-events: none;
+    transition: transform .3s ease;
+    color: var(--text-color-trans);
+}
+
+section.set-new {
+    width: 33rem;
+    align-self: center;
+    justify-self: center;
+}
+
+form>div {
+    margin-bottom: .5rem;
+}
+
+form>div>* {
+    display: block;
+}
+
+form input {
+    box-sizing: border-box;
+    border: 1px solid var(--text-color-trans);
+    font-size: 1rem;
+    border-radius: .6rem;
+    padding: .75rem 1rem;
+    min-width: 30rem;
+    color: var(--text-color);
+    outline: none;
+    background: var(--main-color);
+    position: relative;
+    transition: color .3s ease, border .3s ease;
+    margin-left: 1rem;
+}
+
+form textarea {
+    box-sizing: border-box;
+    border: 1px solid var(--text-color-trans);
+    font-size: 1rem;
+    border-radius: .6rem;
+    padding: .75rem 1rem;
+    min-width: 30rem;
+    color: var(--text-color);
+    outline: none;
+    background: var(--main-color);
+    position: relative;
+    transition: color .3s ease, border .3s ease;
+    resize: vertical;
+    margin-left: 1rem;
+}
+
+form select {
+    box-sizing: border-box;
+    border: 1px solid var(--text-color-trans);
+    font-size: 1rem;
+    border-radius: .6rem;
+    padding: .75rem 1rem;
+    min-width: 30rem;
+    color: var(--text-color);
+    outline: none;
+    background: var(--main-color);
+    position: relative;
+    transition: color .3s ease, border .3s ease;
+    resize: vertical;
+    margin-left: 1rem;
+}
+
+form button[type="submit"] {
+    display: block;
+    padding: .75rem 1rem;
+    font-size: 1rem;
+    background: var(--accent);
+    border: 1.5px solid var(--accent);
+    width: fit-content;
+    border-radius: .6rem;
+    transition: background .3s ease;
+    color: var(--text-color)
+}
+
+form button[type="submit"]:hover {
+    background: transparent;
+}
+
+form label {
+    padding: .5rem;
 }
 
 .nav-text>h3 {
     font-size: 1.2rem;
     margin: 5px 0 0 0;
-}
-
-.nav-text.selected,
-.nav-text:hover {
-    border-bottom: solid;
 }
 
 .nav-separator {
